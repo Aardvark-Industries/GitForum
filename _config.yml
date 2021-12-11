@@ -2,3 +2,7 @@ title: GitForum
 
 plugins:
   - jekyll-seo-tag
+
+collections:
+  boards:
+    output: true

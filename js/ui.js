@@ -27,8 +27,3 @@ function displayPostPreview(post){
 
     postContainer.appendChild(newPost);
 }
-
-posts = loadPosts();
-posts.forEach(post => {
-    displayPostPreview(post);
-});

@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<h1 id="postTitle" class="display-4">Post title</h1>
+<p id="postContent" class="lead">Post content</p>
+
+<script>
+    async function runAfterLoad(){
+        issue = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'))).json(); // get the current post
+        post = new Post(issue.number, issue.title, issue.body, URLParams.get("board"));
+
+        document.getElementById("postTitle").innerText = post.title;
+        document.getElementById("postContent").innerText = post.content;
+    }
+</script>

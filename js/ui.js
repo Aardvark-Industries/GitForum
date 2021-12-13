@@ -1,7 +1,8 @@
 postContainer = document.getElementById("postContainer");
 navLinkContainer = document.getElementById("navLinkContainer")
 
-function displayPostPreview(post){
+function displayPostPreview(post){ // display post preview on board overview
+
     newPost = document.createElement("div");
     newPost.className = "card mb-4";
 
@@ -9,7 +10,7 @@ function displayPostPreview(post){
     newPostBody.className = "card-body";
 
     newPostTitleContainer = document.createElement("a");
-    newPostTitleContainer.href = "#"; //todo: add link generation
+    newPostTitleContainer.href = "/post?post=" + post.id + "&board=" + post.board;
 
     newPostTitle = document.createElement("h5");
     newPostTitle.className = "card-title";

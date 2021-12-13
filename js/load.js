@@ -1,17 +1,8 @@
-function getBoards(){
-    // get all the boards
+async function loadPosts() {
+    var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues')).json()
 
-    return [
-        new Board("general", [
-            new Post(
-                "the test post",
-                "this is a test post",
-                "pr0x1mas",
-                this,
-                "12/12/2021"
-                )
-        ]),
+    var posts = []
+    issues.forEach(issue => posts.push(new Post(issue.title, issue.body)))
 
-        new Board("technology", [])
-    ]
+    return posts;
 }

@@ -1,5 +1,6 @@
 class Post {
-    constructor(title, content, author, board, date){
+    constructor(id, title, content, author, board, date){
+        this.id = id;
         this.title = title;
         this.content = content;
         this.author = author;

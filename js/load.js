@@ -4,7 +4,7 @@ async function loadPosts(board) {
     var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues?labels=' + board.name)).json();
 
     var posts = [];
-    issues.forEach(issue => posts.push(new Post(issue.number, issue.title, issue.body, board.name, "", "", issue.comments)));
+    issues.forEach(issue => posts.push(new Post(issue.number, issue.title, issue.body, board.name, issue.user.login)));
 
     return posts;
 }

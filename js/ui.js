@@ -29,13 +29,13 @@ function displayPostPreview(post){
     postContainer.appendChild(newPost);
 }
 
-async function displayPostPreviews() {
-    var posts = await loadPosts();
+async function displayPostPreviews(boardName) {
+    var posts = await loadPosts(boardName);
     
     posts.forEach(post => displayPostPreview(post))
 }
 
-async function displayNavLinks(){
+async function displayNavLinks(){ // show links to each board in navbar
     var boards = await loadBoards();
 
     boards.forEach(board => {
@@ -46,6 +46,10 @@ async function displayNavLinks(){
         a.innerText = board.name;
         a.href = "/board?board=" + board.name;
         a.className = "nav-link"
+
+        if(board.name == URLParams.get("board")){ // highlight current board
+            a.className += " active"
+        }
 
         ul.appendChild(a);
         navLinkContainer.appendChild(ul);

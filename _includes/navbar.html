@@ -9,29 +9,12 @@
         </button>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul id="navbar-link-container" class="navbar-nav mr-auto">
-                <!--{% for board in site.boards %}
+            <ul class="navbar-nav mr-auto">
+                {% for board in site.boards %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ board.url }}">{{ board.title }}</a>
                     </li>
-                {% endfor %}--> 
-
-                <script>
-                    boardLinkContainer = document.getElementById("navbar-link-container")
-                    boards = getBoards();
-                    boards.forEach(board => {
-                        newItem = document.createElement("li");
-                        newItem.className = "nav-item";
-
-                        newItemLink = document.createElement("a");
-                        newItemLink.className = "nav-link";
-                        newItemLink.href = "/" + board.name;
-                        newItemLink.innerText = board.name;
-
-                        newItem.appendChild(newItemLink);
-                        boardLinkContainer.appendChild(newItem)
-                    });
-                </script>
+                {% endfor %}
             </ul>
         </div>
     </div>

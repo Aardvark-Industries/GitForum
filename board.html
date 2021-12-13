@@ -12,5 +12,7 @@ layout: default
 </div>
 
 <script>
-    window.onload = function(){eval("displayPostPreviews()")}; // we want to set the function to run on page load but it isn't defined yet so I present this shitty hack
+    function runAfterLoad(){
+        displayPostPreviews(URLParams.get('board'))
+    }
 </script>

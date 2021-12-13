@@ -1,4 +1,5 @@
 postContainer = document.getElementById("postContainer");
+navLinkContainer = document.getElementById("navLinkContainer")
 
 function displayPostPreview(post){
     newPost = document.createElement("div");
@@ -34,4 +35,19 @@ async function displayPostPreviews() {
     posts.forEach(post => displayPostPreview(post))
 }
 
-displayPostPreviews();
+async function displayNavLinks(){
+    var boards = await loadBoards();
+
+    boards.forEach(board => {
+        ul = document.createElement("li");
+        ul.className = "nav-item";
+
+        a = document.createElement("a");
+        a.innerText = board.name;
+        a.href = "/board?board=" + board.name;
+        a.className = "nav-link"
+
+        ul.appendChild(a);
+        navLinkContainer.appendChild(ul);
+    })
+}

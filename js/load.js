@@ -1,8 +1,17 @@
 async function loadPosts() {
-    var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues')).json()
+    var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues')).json();
 
-    var posts = []
-    issues.forEach(issue => posts.push(new Post(issue.title, issue.body)))
+    var posts = [];
+    issues.forEach(issue => posts.push(new Post(issue.title, issue.body)));
 
     return posts;
+}
+
+async function loadBoards() {
+    var labels = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/labels')).json();
+
+    var boards = [];
+    labels.forEach(label => boards.push(new Board(label.name, label.description)));
+
+    return boards;
 }

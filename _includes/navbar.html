@@ -9,12 +9,7 @@
         </button>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {% for board in site.boards %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ board.url }}">{{ board.title }}</a>
-                    </li>
-                {% endfor %}
+            <ul id="navLinkContainer" class="navbar-nav mr-auto">
             </ul>
         </div>
     </div>

@@ -2,7 +2,15 @@
 layout: default
 ---
 
+<p>
+    <span>
+        Posted by <a class="text-decoration-none" id="postAuthor"></a>
+    </span>
+</p>
 <h1 id="postTitle" class="display-4 placeholder-glow"><span class="placeholder col-7"></span></h1>
+<span class="badge rounded-pill bg-primary">
+    <a class="text-light text-decoration-none"  id="postBoard"></a>
+</span>
 <p id="postContent" class="lead placeholder-glow"><span class="placeholder col-7"></span>
     <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
     <span class="placeholder col-4"></span>
@@ -13,9 +21,17 @@ layout: default
 <script>
     async function runAfterLoad(){
         issue = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'))).json(); // get the current post
-        post = new Post(issue.number, issue.title, issue.body, URLParams.get("board"));
+        post = new Post(issue.number, issue.title, issue.body, URLParams.get("board"), issue.user.login);
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;
+
+        document.getElementById("postBoard").innerText = URLParams.get("board");
+        document.getElementById("postBoard").href = "/" + URLParams.get("board");
+
+        document.getElementById("postAuthor").innerText = post.author;
+        document.getElementById("postAuthor").href = "/user?user=" + post.author;
+
+        document.title = post.title;
     }
 </script>

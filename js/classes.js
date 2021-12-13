@@ -1,11 +1,12 @@
 class Post {
-    constructor(id, title, content, board, author, date){
+    constructor(id, title, content, board, author, date, comments){
         this.id = id;
         this.title = title;
         this.content = content;
         this.board = board;
         this.author = author;
-        this.date = date
+        this.date = date;
+        this.comments = comments;
     }
 }
 

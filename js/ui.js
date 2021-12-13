@@ -18,11 +18,22 @@ function displayPostPreview(post){ // display post preview on board overview
 
     newPostTitleContainer.appendChild(newPostTitle);
 
+    newPostCommentIndicatorContainer = document.createElement("h6");
+    newPostCommentIndicatorContainer.className = "float-right";
+
+    newPostCommentIndicator = document.createElement("span");
+    newPostCommentIndicator.className = "badge badge-secondary";
+    newPostCommentIndicator.innerText = "20";
+    // newPostCommentIndicator.innerText = post.comments.toString();
+
+    newPostCommentIndicatorContainer.appendChild(newPostCommentIndicator);
+
     newPostContent = document.createElement("p");
     newPostContent.className = "card-text";
     newPostContent.innerText = post.content;
 
     newPostBody.appendChild(newPostTitleContainer);
+    newPostBody.appendChild(newPostCommentIndicatorContainer);
     newPostBody.appendChild(newPostContent);
 
     newPost.appendChild(newPostBody);

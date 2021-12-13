@@ -1,5 +1,8 @@
-function loadPosts(){
-    // this is where you do the magic shit
+async function loadPosts() {
+    var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues')).json()
 
-    return [new Post("the test post", "your mum")]
+    var posts = []
+    issues.forEach(issue => posts.push(new Post(issue.title, issue.body)))
+
+    return posts;
 }

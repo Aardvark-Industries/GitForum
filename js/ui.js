@@ -4,10 +4,10 @@ navLinkContainer = document.getElementById("navLinkContainer")
 function displayPostPreview(post){ // display post preview on board overview
 
     newPost = document.createElement("div");
-    newPost.className = "card mb-4";
+    newPost.className = "card mb-4 position-relative";
 
     newPostBody = document.createElement("div");
-    newPostBody.className = "card-body";
+    newPostBody.className = "card-body position-relative";
 
     newPostTitleContainer = document.createElement("a");
     newPostTitleContainer.href = "/post?post=" + post.id + "&board=" + post.board;
@@ -18,22 +18,23 @@ function displayPostPreview(post){ // display post preview on board overview
 
     newPostTitleContainer.appendChild(newPostTitle);
 
-    newPostCommentIndicatorContainer = document.createElement("h6");
-    newPostCommentIndicatorContainer.className = "float-right";
-
     newPostCommentIndicator = document.createElement("span");
-    newPostCommentIndicator.className = "badge badge-secondary";
-    newPostCommentIndicator.innerText = "20";
-    // newPostCommentIndicator.innerText = post.comments.toString();
+    newPostCommentIndicator.className = "badge bg-secondary position-absolute end-0 translate-middle";
+    newPostCommentIndicator.style = "font-size: 2rem;"
+    newPostCommentIndicator.innerText = post.comments.toString() + " ";
 
-    newPostCommentIndicatorContainer.appendChild(newPostCommentIndicator);
+    newPostCommentIcon = document.createElement("i");
+    newPostCommentIcon.className = "bi bi-reply-fill";
+    newPostCommentIcon.style = "font-size: 2rem; color: cornflowerblue;";
+
+    newPostCommentIndicator.appendChild(newPostCommentIcon);
 
     newPostContent = document.createElement("p");
     newPostContent.className = "card-text";
     newPostContent.innerText = post.content;
 
     newPostBody.appendChild(newPostTitleContainer);
-    newPostBody.appendChild(newPostCommentIndicatorContainer);
+    newPostBody.appendChild(newPostCommentIndicator);
     newPostBody.appendChild(newPostContent);
 
     newPost.appendChild(newPostBody);

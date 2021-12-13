@@ -44,7 +44,11 @@ function displayPostPreview(post){ // display post preview on board overview
 async function displayPostPreviews(board) {
     var posts = await loadPosts(board);
     
-    posts.forEach(post => displayPostPreview(post))
+    posts.forEach(post => {
+        displayPostPreview(post);
+        console.log(post);
+    }
+    )
 }
 
 async function displayNavLinks(){ // show links to each board in navbar

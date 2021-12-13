@@ -1,12 +1,12 @@
 class Post {
-    constructor(response){
-        this.id = response.number;
-        this.title = response.title;
-        this.content = response.body;
-        this.board = response.labels[0];
-        this.author = response.user.login;
-        this.date = response.updated_at;
-        this.comments = response.comments;
+    constructor(id, title, content, board, author, date, comments){
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.board = board;
+        this.author = author;
+        this.date = date;
+        this.comments = comments;
     }
 }
 

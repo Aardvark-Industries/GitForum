@@ -2,8 +2,9 @@
 layout: default
 ---
 
-<h1 id="boardTitle"></h1>
-<p id="boardContent"></p>
+<h1 class="display-4" id="boardTitle"></h1>
+<h2 class="lead" id="boardDescription"></h2>
+<hr class="my-4">
 
 <h2>Latest posts</h2>
 
@@ -12,7 +13,15 @@ layout: default
 </div>
 
 <script>
-    function runAfterLoad(){
-        displayPostPreviews(URLParams.get('board'))
+
+    async function runAfterLoad(){
+        label = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/labels/' + URLParams.get('board'))).json(); // get the current board
+        board = new Board(label.name, label.description); // convert to board object
+        document.getElementById("boardTitle").innerText = board.name; // set title
+        document.getElementById("boardDescription").innerText = board.description; // set description
+
+        document.title = "GitForum - " + board.name;
+
+        displayPostPreviews(board);
     }
 </script>

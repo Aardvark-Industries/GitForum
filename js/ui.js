@@ -29,8 +29,8 @@ function displayPostPreview(post){
     postContainer.appendChild(newPost);
 }
 
-async function displayPostPreviews(boardName) {
-    var posts = await loadPosts(boardName);
+async function displayPostPreviews(board) {
+    var posts = await loadPosts(board);
     
     posts.forEach(post => displayPostPreview(post))
 }

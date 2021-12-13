@@ -9,8 +9,8 @@ class Post {
 }
 
 class Board {
-    constructor(name){
+    constructor(name, description){
         this.name = name;
-        this.posts = [];
+        this.description = description;
     }
 }

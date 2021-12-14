@@ -42,6 +42,7 @@ function displayPostPreview(post){ // display post preview on board overview
     postCommentIndicator.className = "badge bg-secondary";
     postCommentIndicator.style = ""
     postCommentIndicator.innerText = post.comments.toString() + " ";
+    console.log(post);
 
     postCommentIcon = document.createElement("i");
     postCommentIcon.className = "bi bi-chat-left-text-fill";
@@ -63,11 +64,7 @@ function displayPostPreview(post){ // display post preview on board overview
 async function displayPostPreviews(board) {
     var posts = await loadPosts(board);
     
-    posts.forEach(post => {
-        displayPostPreview(post);
-        console.log(post);
-    }
-    )
+    posts.forEach(post => displayPostPreview(post))
 }
 
 async function displayNavLinks(){ // show links to each board in navbar

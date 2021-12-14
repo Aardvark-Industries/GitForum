@@ -15,8 +15,7 @@ layout: default
 <script>
 
     async function runAfterLoad(){
-        label = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/labels/' + URLParams.get('board'))).json(); // get the current board
-        board = new Board(label.name, label.description); // convert to board object
+        board = await getBoardFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/labels/' + URLParams.get('board'));
         document.getElementById("boardTitle").innerText = board.name; // set title
         document.getElementById("boardDescription").innerText = board.description; // set description
 

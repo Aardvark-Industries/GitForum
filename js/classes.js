@@ -11,22 +11,23 @@ class Post {
 }
 
 class Board {
-    constructor(name, description){
+    constructor(name, description, posts){
         this.name = name;
         this.description = description;
+        this.posts = posts;
     }
 }
 
 async function getPostFromURL(url){ // ideally I would put this in the constructor but it doesn't fucking work
     issue = await (await fetch(url)).json();
-    post = new Post(issue.number, issue.title, issue.body, issue.labels[0], issue.user.login);
+    post = new Post(issue.number, issue.title, issue.body, issue.labels[0], issue.user.login, issue.created_at);
 
     return post;
 }
 
 async function getBoardFromURL(url){
     label = await (await fetch(url)).json(); // get the current board
-    board = new Board(label.name, label.description);
+    board = new Board(label.name, label.description, );
 
     return board;
 }

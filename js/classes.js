@@ -14,7 +14,6 @@ class Board {
     constructor(name, description, posts){
         this.name = name;
         this.description = description;
-        this.posts = posts;
     }
 }
 
@@ -27,7 +26,8 @@ async function getPostFromURL(url){ // ideally I would put this in the construct
 
 async function getBoardFromURL(url){
     label = await (await fetch(url)).json(); // get the current board
-    board = new Board(label.name, label.description, );
+
+    board = new Board(label.name, label.description);
 
     return board;
 }

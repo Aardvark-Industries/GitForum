@@ -7,16 +7,17 @@ title: New Post
 <hr class="my-4">
 
 <form>
-    <div class="mb-3">
-        <label for="boardSelector" class="form-label">Select a board</label>
+    <div class="mb-3 form-floating">
         <select id="boardSelector" class="form-select" aria-label="Select a board">
-        
+            <option id="placeholderBoard" selected>test</option>
         </select>
+
+        <label for="boardSelector">Select a board</label>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 form-floating">
+        <textarea class="form-control" id="postContent" style="min-height: 20rem;"></textarea>
         <label for="postContent" class="form-label">Type your post</label>
-        <textarea class="form-control" id="postContent" rows="5"></textarea>
     </div>
 
     <button onclick="submitPost()" class="btn btn-primary" type="button">Submit</button>
@@ -34,6 +35,8 @@ title: New Post
 
             boardSelector.appendChild(option);
         });
+
+        boardSelector.removeChild(document.getElementById("placeholderBoard"));
     }
 
     async function submitPost(){

@@ -16,3 +16,10 @@ class Board {
         this.description = description;
     }
 }
+
+async function getPostFromURL(url){ // ideally I would put this in the constructor but it doesn't fucking work
+    issue = await (await fetch(url)).json();
+    post = new Post(issue.number, issue.title, issue.body, URLParams.get("board"), issue.user.login);
+
+    return post;
+}

@@ -3,43 +3,61 @@ navLinkContainer = document.getElementById("navLinkContainer")
 
 function displayPostPreview(post){ // display post preview on board overview
 
-    newPost = document.createElement("div");
-    newPost.className = "card mb-4 position-relative";
+    postObject = document.createElement("div");
+    postObject.className = "card mb-4";
 
-    newPostBody = document.createElement("div");
-    newPostBody.className = "card-body position-relative";
+    //------------------------------------------
+    postBody = document.createElement("div");
+    postBody.className = "card-body row";
 
-    newPostTitleContainer = document.createElement("a");
-    newPostTitleContainer.href = "/post?post=" + post.id + "&board=" + post.board;
+    postTitleContainer = document.createElement("a");
+    postTitleContainer.href = "/post?post=" + post.id + "&board=" + post.board;
 
-    newPostTitle = document.createElement("h5");
-    newPostTitle.className = "card-title";
-    newPostTitle.innerText = post.title;
+    postTitle = document.createElement("h5");
+    postTitle.className = "card-title";
+    postTitle.innerText = post.title;
 
-    newPostTitleContainer.appendChild(newPostTitle);
+    postTitleContainer.appendChild(postTitle);
 
-    newPostCommentIndicator = document.createElement("span");
-    newPostCommentIndicator.className = "badge bg-secondary position-absolute end-0 translate-middle";
-    newPostCommentIndicator.style = "font-size: 2rem;"
-    newPostCommentIndicator.innerText = post.comments.toString() + " ";
+    postContent = document.createElement("p");
+    postContent.className = "card-text";
+    postContent.innerText = post.content;
 
-    newPostCommentIcon = document.createElement("i");
-    newPostCommentIcon.className = "bi bi-reply-fill";
-    newPostCommentIcon.style = "font-size: 2rem; color: cornflowerblue;";
+    postContentContainer = document.createElement("div");
+    postContentContainer.className = "col";
 
-    newPostCommentIndicator.appendChild(newPostCommentIcon);
+    postContentContainer.appendChild(postTitleContainer);
+    postContentContainer.appendChild(postContent);
 
-    newPostContent = document.createElement("p");
-    newPostContent.className = "card-text";
-    newPostContent.innerText = post.content;
+    //------------------------------------------
 
-    newPostBody.appendChild(newPostTitleContainer);
-    newPostBody.appendChild(newPostCommentIndicator);
-    newPostBody.appendChild(newPostContent);
 
-    newPost.appendChild(newPostBody);
+    //------------------------------------------
 
-    postContainer.appendChild(newPost);
+    postBadgeContainer = document.createElement("div");
+    postBadgeContainer.className = "col-1 text-end";
+    postBadgeContainer.style.boxSizing = "content-box"; // forces badge inside card... at least until the screen gets really small
+
+    postCommentIndicator = document.createElement("span");
+    postCommentIndicator.className = "badge bg-secondary";
+    postCommentIndicator.style = ""
+    postCommentIndicator.innerText = post.comments.toString() + " ";
+
+    postCommentIcon = document.createElement("i");
+    postCommentIcon.className = "bi bi-chat-left-text-fill";
+    postCommentIcon.style = "";
+
+    postCommentIndicator.appendChild(postCommentIcon);
+
+    postBadgeContainer.appendChild(postCommentIndicator);
+    //------------------------------------------
+
+    postBody.appendChild(postContentContainer);
+    postBody.appendChild(postBadgeContainer);
+
+    post.appendChild(postBody);
+
+    postContainer.appendChild(post);
 }
 
 async function displayPostPreviews(board) {

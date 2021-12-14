@@ -55,9 +55,9 @@ function displayPostPreview(post){ // display post preview on board overview
     postBody.appendChild(postContentContainer);
     postBody.appendChild(postBadgeContainer);
 
-    post.appendChild(postBody);
+    postObject.appendChild(postBody);
 
-    postContainer.appendChild(post);
+    postContainer.appendChild(postObject);
 }
 
 async function displayPostPreviews(board) {

@@ -1,0 +1,42 @@
+---
+layout: default
+title: New Post
+---
+
+<h1 class="display-4">New Post</h1>
+<hr class="my-4">
+
+<form>
+    <div class="mb-3">
+        <label for="boardSelector" class="form-label">Select a board</label>
+        <select id="boardSelector" class="form-select" aria-label="Select a board">
+        
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="postContent" class="form-label">Type your post</label>
+        <textarea class="form-control" id="postContent" rows="5"></textarea>
+    </div>
+
+    <button onclick="submitPost()" class="btn btn-primary" type="button">Submit</button>
+</form>
+
+<script>
+    async function runAfterLoad(){
+        var boards = await loadBoards();
+        var boardSelector = document.getElementById("boardSelector");
+
+        boards.forEach(board => {
+            option = document.createElement("option");
+            option.value = board.name;
+            option.innerText = board.name;
+
+            boardSelector.appendChild(option);
+        });
+    }
+
+    async function submitPost(){
+        // magic shit
+    }
+</script>

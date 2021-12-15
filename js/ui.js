@@ -76,7 +76,7 @@ async function displayNavLinks(){ // show links to each board in navbar
 
         a = document.createElement("a");
         a.innerText = board.name;
-        a.href = "/board?board=" + board.name;
+        a.href = "board?board=" + board.name;
         a.className = "nav-link"
 
         if(board.name == URLParams.get("board")){ // highlight current board

@@ -41,6 +41,7 @@ title: Untitled Post
 
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
+        document.getElementById("postTime").title = DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED);
 
         document.title = "GitForum - " + post.title;
     }

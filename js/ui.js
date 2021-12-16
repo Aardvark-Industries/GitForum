@@ -42,7 +42,6 @@ function displayPostPreview(post){ // display post preview on board overview
     postCommentIndicator.className = "badge bg-secondary";
     postCommentIndicator.style = ""
     postCommentIndicator.innerText = post.comments.toString() + " ";
-    console.log(post);
 
     postCommentIcon = document.createElement("i");
     postCommentIcon.className = "bi bi-chat-left-text-fill";

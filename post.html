@@ -40,7 +40,8 @@ layout: default
         document.getElementById("postAuthor").innerText = post.author;
         document.getElementById("postAuthor").href = "/user?user=" + post.author;
 
-        document.getElementById("postTime").innerText = post.date;
+        var DateTime = luxon.DateTime;
+        document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED);
 
         document.title = post.title;
     }

@@ -11,8 +11,6 @@ layout: default
             <a class="text-light text-decoration-none"  id="postBoard"></a>
         </span>
 
-        on
-
         <span id="postTime">
 
         </span>
@@ -41,7 +39,9 @@ layout: default
         document.getElementById("postAuthor").href = "/user?user=" + post.author;
 
         var DateTime = luxon.DateTime;
-        document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED);
+        date = 
+
+        document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
 
         document.title = post.title;
     }

@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Untitled Post
 ---
 
 <h1 id="postTitle" class="display-4 placeholder-glow"><span class="placeholder col-7"></span></h1>
@@ -39,10 +40,8 @@ layout: default
         document.getElementById("postAuthor").href = "/user?user=" + post.author;
 
         var DateTime = luxon.DateTime;
-        date = 
-
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
 
-        document.title = post.title;
+        document.title = "GitForum - " + post.title;
     }
 </script>

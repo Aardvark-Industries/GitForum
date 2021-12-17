@@ -1,4 +1,4 @@
-import {URLParams, loadPosts, loadBoards} from '/modules/load.js';
+import {URLParams, loadPosts, loadBoards} from '/GitForum/modules/load.js';
 
 var postContainer = document.getElementById("postContainer");
 var navLinkContainer = document.getElementById("navLinkContainer")

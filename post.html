@@ -26,9 +26,12 @@ title: Untitled Post
     <span class="placeholder col-8"></span>
 </p>
 
-<script>
-    async function runAfterLoad(){
-        post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'))
+<script type="module">
+    import {getPostFromURL} from '/modules/classes.js';
+    import {URLParams} from '/modules/load.js';
+
+    (async () => {
+        var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;
@@ -45,5 +48,6 @@ title: Untitled Post
         document.getElementById("postTime").setAttribute('data-bs-original-title', document.getElementById("postTime").dataset.title); // set bootstrap tooltip as well
 
         document.title = "GitForum - " + post.title;
-    }
+    })();
+        
 </script>

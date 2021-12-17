@@ -1,3 +1,5 @@
+import {Post, Board, getPostFromURL, getBoardFromURL} from '/modules/classes.js';
+
 var URLParams = new URLSearchParams(window.location.search);
 
 async function loadPosts(board) {
@@ -17,3 +19,5 @@ async function loadBoards() {
 
     return boards;
 }
+
+export {URLParams, loadPosts, loadBoards};

@@ -1,4 +1,4 @@
-consoleFlash =             `
+var consoleFlash =             `
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀
@@ -40,16 +40,18 @@ class Board {
 }
 
 async function getPostFromURL(url){ // ideally I would put this in the constructor but it doesn't fucking work
-    issue = await (await fetch(url)).json();
-    post = new Post(issue.number, issue.title, issue.body, issue.labels[0], issue.user.login, issue.created_at);
+    var issue = await (await fetch(url)).json();
+    var post = new Post(issue.number, issue.title, issue.body, issue.labels[0], issue.user.login, issue.created_at);
 
     return post;
 }
 
 async function getBoardFromURL(url){
-    label = await (await fetch(url)).json(); // get the current board
+    var label = await (await fetch(url)).json(); // get the current board
 
-    board = new Board(label.name, label.description);
+    var board = new Board(label.name, label.description);
 
     return board;
 }
+
+export {consoleFlash, Post, Board, getPostFromURL, getBoardFromURL};

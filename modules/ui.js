@@ -1,29 +1,31 @@
-postContainer = document.getElementById("postContainer");
-navLinkContainer = document.getElementById("navLinkContainer")
+import {URLParams, loadPosts, loadBoards} from '/modules/load.js';
+
+var postContainer = document.getElementById("postContainer");
+var navLinkContainer = document.getElementById("navLinkContainer")
 
 function displayPostPreview(post){ // display post preview on board overview
 
-    postObject = document.createElement("div");
+    var postObject = document.createElement("div");
     postObject.className = "card mb-4";
 
     //------------------------------------------
-    postBody = document.createElement("div");
+    var postBody = document.createElement("div");
     postBody.className = "card-body row";
 
-    postTitleContainer = document.createElement("a");
+    var postTitleContainer = document.createElement("a");
     postTitleContainer.href = "post?post=" + post.id + "&board=" + post.board;
 
-    postTitle = document.createElement("h5");
+    var postTitle = document.createElement("h5");
     postTitle.className = "card-title";
     postTitle.innerText = post.title;
 
     postTitleContainer.appendChild(postTitle);
 
-    postContent = document.createElement("p");
+    var postContent = document.createElement("p");
     postContent.className = "card-text";
     postContent.innerText = post.content;
 
-    postContentContainer = document.createElement("div");
+    var postContentContainer = document.createElement("div");
     postContentContainer.className = "col";
 
     postContentContainer.appendChild(postTitleContainer);
@@ -34,16 +36,16 @@ function displayPostPreview(post){ // display post preview on board overview
 
     //------------------------------------------
 
-    postBadgeContainer = document.createElement("div");
+    var postBadgeContainer = document.createElement("div");
     postBadgeContainer.className = "col-1 text-end";
     postBadgeContainer.style.boxSizing = "content-box"; // forces badge inside card... at least until the screen gets really small
 
-    postCommentIndicator = document.createElement("span");
+    var postCommentIndicator = document.createElement("span");
     postCommentIndicator.className = "badge bg-secondary";
     postCommentIndicator.style = ""
     postCommentIndicator.innerText = post.comments.toString() + " ";
 
-    postCommentIcon = document.createElement("i");
+    var postCommentIcon = document.createElement("i");
     postCommentIcon.className = "bi bi-chat-left-text-fill";
     postCommentIcon.style = "";
 
@@ -70,15 +72,15 @@ async function displayNavLinks(){ // show links to each board in navbar
     var boards = await loadBoards();
 
     boards.forEach(board => {
-        ul = document.createElement("li");
+        var ul = document.createElement("li");
         ul.className = "nav-item";
 
-        a = document.createElement("a");
+        var a = document.createElement("a");
         a.innerText = board.name;
         a.href = "board?board=" + board.name;
         a.className = "nav-link"
 
-        if(board.name == URLParams.get("board")){ // highlight current board
+        if (board.name == URLParams.get("board")){ // highlight current board
             a.className += " active"
         }
 
@@ -86,3 +88,5 @@ async function displayNavLinks(){ // show links to each board in navbar
         navLinkContainer.appendChild(ul);
     })
 }
+
+export {displayPostPreviews, displayNavLinks};

@@ -4,3 +4,5 @@ plugins:
   - jekyll-seo-tag
 
 baseurl: /GitForum
+
+version: 0.0.1a

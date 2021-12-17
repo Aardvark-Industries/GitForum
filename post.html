@@ -12,7 +12,7 @@ title: Untitled Post
             <a class="text-light text-decoration-none"  id="postBoard"></a>
         </span>
 
-        <span id="postTime">
+        <span data-bs-toggle="tooltip" title="Loading time..." id="postTime">
 
         </span>
     
@@ -42,6 +42,7 @@ title: Untitled Post
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
         document.getElementById("postTime").title = DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED);
+        document.getElementById("postTime").setAttribute('data-bs-original-title', document.getElementById("postTime").title); // set bootstrap tooltip as well
 
         document.title = "GitForum - " + post.title;
     }

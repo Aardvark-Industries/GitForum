@@ -1,6 +1,13 @@
 import {Post, Board, getPostFromURL, getBoardFromURL} from '/modules/classes.js';
+import {Octokit} from 'https://cdn.skypack.dev/@octokit/rest';
 
 var URLParams = new URLSearchParams(window.location.search);
+
+async function instantiateAPI(version) {
+    return new Octokit({
+        userAgent: `GitForum v${version}`
+    })
+}
 
 async function loadPosts(board) {
     var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues?labels=' + board.name)).json();
@@ -20,4 +27,4 @@ async function loadBoards() {
     return boards;
 }
 
-export {URLParams, loadPosts, loadBoards};
+export {URLParams, instantiateAPI, loadPosts, loadBoards};

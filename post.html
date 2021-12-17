@@ -27,8 +27,8 @@ title: Untitled Post
 </p>
 
 <script type="module">
-    import {getPostFromURL} from './modules/classes.js';
-    import {URLParams} from './modules/load.js';
+    import {getPostFromURL} from '/modules/classes.js';
+    import {URLParams} from '/modules/load.js';
 
     (async () => {
         var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));

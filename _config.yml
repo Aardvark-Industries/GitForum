@@ -1,6 +1,6 @@
 title: GitForum
 
-baseurl: /GitForum
+
 
 plugins:
   - jekyll-seo-tag

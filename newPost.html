@@ -25,11 +25,12 @@ title: New Post
         <label for="postContent" class="form-label">Type your post</label>
     </div>
 
-    <button disabled onclick="submitPost()" class="btn btn-primary" type="button">Submit</button>
+    <button id="submit-post-button" class="btn btn-primary" type="button">Submit</button>
 </form>
 
 <script type="module">
     import {loadBoards} from '/{{ site.repo }}/modules/load.js';
+    import {sendPost} from '/{{ site.repo }}/modules/post.js';
 
     (async () => {
         var boards = await loadBoards(window.OCTOKIT);
@@ -47,6 +48,8 @@ title: New Post
     })();
 
     async function submitPost(){
-        // magic shit
+        await sendPost(window.OCTOKIT, window.OWNER, window.REPO, document.getElementById("postTitle").value, document.getElementById("postContent").value, document.getElementById("boardSelector").value)
     }
+
+    document.getElementById("submit-post-button").onclick = (() => {submitPost()});
 </script>

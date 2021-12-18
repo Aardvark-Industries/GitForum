@@ -10,3 +10,5 @@ async function sendPost(octokit, owner, repo, title, body, board) {
         labels: [board]
     });
 }
+
+export {sendPost};

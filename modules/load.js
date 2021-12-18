@@ -3,10 +3,18 @@
 
 import {Post, Board, getPostFromURL, getBoardFromURL} from '/{{ site.repo }}/modules/classes.js';
 import {Octokit} from 'https://cdn.skypack.dev/@octokit/rest';
+import Cookies from 'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.mjs';
 
 var URLParams = new URLSearchParams(window.location.search);
 
 async function instantiateAPI() {
+    if (Cookies.get('token') != undefined) {
+        return new Octokit({
+            userAgent: 'GitForum v{{ site.version }}',
+            auth: Cookies.get('token')
+        });
+    }
+    
     return new Octokit({
         userAgent: 'GitForum v{{ site.version }}'
     });

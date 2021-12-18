@@ -18,7 +18,7 @@
                 <input alt=" " class="rounded" id="userButton" role="button" data-bs-toggle="dropdown" style="height: 100%;" aria-expanded="false" type="image">
 
                 <ul class="dropdown-menu" aria-labelledby="userBurron">
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a id="logout-button" class="dropdown-item" href="">Logout</a></li>
                   </ul>
             </div>
 
@@ -39,3 +39,9 @@
 
     </div>
 </nav>
+
+<script type="module">
+    import {removeTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
+
+    document.getElementById("logout-button").onclick = (() => {removeTokenCookie()});
+</script>

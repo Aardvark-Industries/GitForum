@@ -1,4 +1,7 @@
-import {Post, Board, getPostFromURL, getBoardFromURL} from '/GitForum/modules/classes.js';
+---
+---
+
+import {Post, Board, getPostFromURL, getBoardFromURL} from '/{{ site.repo }}/modules/classes.js';
 import {Octokit} from 'https://cdn.skypack.dev/@octokit/rest';
 
 var URLParams = new URLSearchParams(window.location.search);

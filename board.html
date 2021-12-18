@@ -18,20 +18,18 @@ layout: default
 </div>
 
 <script type="module">
-    import {getBoardFromURL} from '/GitForum/modules/classes.js';
-    import {URLParams, getBoard} from '/GitForum/modules/load.js';
-    import {displayPostPreviews} from '/GitForum/modules/ui.js';
+    import {getBoardFromURL} from '/{{ site.repo }}/modules/classes.js';
+    import {URLParams, getBoard} from '/{{ site.repo }}/modules/load.js';
+    import {displayPostPreviews} from '/{{ site.repo }}/modules/ui.js';
 
     (async () => {
-        // var board = await getBoardFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/labels/' + URLParams.get('board'));
-        
-        var board = await getBoard(window.octokit, 'Aardvark-Industries', 'GitForum-content', URLParams.get('board'));
-        
+        var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('board'));
+
         document.getElementById("boardTitle").innerText = board.name; // set title
         document.getElementById("boardDescription").innerText = board.description; // set description
 
         document.title = "GitForum - " + board.name;
         
-        displayPostPreviews(window.octokit, board);
+        displayPostPreviews(window.OCTOKIT, board);
     })();
 </script>

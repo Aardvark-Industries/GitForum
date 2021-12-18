@@ -27,12 +27,12 @@ title: Untitled Post
 </p>
 
 <script type="module">
-    import {getPostFromURL} from '/GitForum/modules/classes.js';
-    import {URLParams, getPost} from '/GitForum/modules/load.js';
+    import {getPostFromURL} from '/{{ site.repo }}/modules/classes.js';
+    import {URLParams, getPost} from '/{{ site.repo }}/modules/load.js';
 
     (async () => {
         // var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));
-        var post =  await getPost(window.octokit, 'Aardvark-Industries', 'GitForum-content', URLParams.get('post'));
+        var post =  await getPost(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', URLParams.get('post'));
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;

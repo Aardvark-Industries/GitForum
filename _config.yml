@@ -1,6 +1,9 @@
 title: GitForum
 version: 0.0.1a
 
+owner: Aardvark-Industries
+repo: GitForum
+
 baseurl: /GitForum
 
 plugins:

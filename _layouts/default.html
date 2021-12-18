@@ -32,7 +32,7 @@
         var version = "{{ site.version }}"
         console.log(consoleFlash);
         console.log('%cGitForum', 'font-size: 40px; color: #FF69B4');
-        console.log("v" + version);
+        console.log("v{{ site.version }}");
 
         (async () => {
             displayNavLinks(window.octokit);

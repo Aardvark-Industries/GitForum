@@ -1,3 +1,6 @@
+---
+---
+
 import {URLParams, loadPosts, loadBoards} from '/GitForum/modules/load.js';
 
 var postContainer = document.getElementById("postContainer");

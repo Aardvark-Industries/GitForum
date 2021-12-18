@@ -78,6 +78,8 @@ async function displayNavLinks(){ // show links to each board in navbar
     } else {
         document.getElementById("userButton").style.display = "none";
     }
+    document.getElementById("userButton").alt = " ";
+    document.getElementById("userButton").src = "assets/placeholderAvatar.png"
 
     boards.forEach(board => {
         var ul = document.createElement("li");

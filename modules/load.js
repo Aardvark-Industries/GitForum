@@ -47,6 +47,8 @@ async function loadPosts(octokit, board) {
 }
 
 async function loadBoards(octokit) {
+    if (window.BOARDS != undefined) { return window.BOARDS }
+
     var labels = await octokit.rest.issues.listLabelsForRepo({
         owner: 'Aardvark-Industries',
         repo: 'GitForum-content'

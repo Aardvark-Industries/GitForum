@@ -5,7 +5,3 @@ baseurl: /GitForum
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-last-modified-at
-
-last-modified-at:
-  date-format: '%d/%m/%y'

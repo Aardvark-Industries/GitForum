@@ -1,8 +1,11 @@
 title: GitForum
-
-plugins:
-  - jekyll-seo-tag
+version: 0.0.1a
 
 baseurl: /GitForum
 
-version: 0.0.1a
+plugins:
+  - jekyll-seo-tag
+  - jekyll-last-modified-at
+
+last-modified-at:
+  date-format: '%d/%m/%y'

@@ -44,6 +44,7 @@ class Board {
 
 async function getPostFromURL(url){ // ideally I would put this in the constructor but it doesn't fucking work
     var issue = await (await fetch(url)).json();
+
     var post = new Post(issue.number, issue.title, issue.body, issue.labels[0], issue.user.login, issue.created_at);
 
     return post;

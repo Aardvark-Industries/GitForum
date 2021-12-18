@@ -32,10 +32,10 @@ title: New Post
     import {loadBoards} from '/GitForum/modules/load.js';
 
     (async () => {
-        var boards = await loadBoards(window.octokit);
+        //var boards = await loadBoards(window.octokit);
         var boardSelector = document.getElementById("boardSelector");
 
-        boards.forEach(board => {
+        window.boards.forEach(board => {
             var option = document.createElement("option");
             option.value = board.name;
             option.innerText = board.name;

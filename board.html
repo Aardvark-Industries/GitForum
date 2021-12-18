@@ -29,6 +29,6 @@ layout: default
 
         document.title = "GitForum - " + board.name;
         
-        displayPostPreviews(board);
+        displayPostPreviews(window.octokit, board);
     })();
 </script>

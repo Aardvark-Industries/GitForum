@@ -22,4 +22,15 @@
 
     <!-- Date parsing -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.2.0/build/global/luxon.min.js"></script>
+
+    <script type="module">
+        import {instantiateAPI, loadBoards} from '/GitForum/modules/load.js';
+
+        (async () => {
+            window.octokit = await instantiateAPI();
+            window.boards = await loadBoards(window.octokit);
+        })();
+
+
+    </script>
 </head>

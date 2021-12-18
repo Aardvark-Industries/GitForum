@@ -62,14 +62,14 @@ function displayPostPreview(post){ // display post preview on board overview
     postContainer.appendChild(postObject);
 }
 
-async function displayPostPreviews(board) {
-    var posts = await loadPosts(board);
+async function displayPostPreviews(octokit, board) {
+    var posts = await loadPosts(octokit, board);
     
     posts.forEach(post => displayPostPreview(post))
 }
 
-async function displayNavLinks(){ // show links to each board in navbar
-    var boards = await loadBoards();
+async function displayNavLinks(octokit){ // show links to each board in navbar
+    var boards = await loadBoards(octokit);
 
     var loggedIn = false;
     if(Cookies.get('token')){
@@ -78,6 +78,7 @@ async function displayNavLinks(){ // show links to each board in navbar
     } else {
         document.getElementById("userButton").style.display = "none";
     }
+
     document.getElementById("userButton").alt = " ";
     document.getElementById("userButton").src = "assets/placeholderAvatar.png"
 

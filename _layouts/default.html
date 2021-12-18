@@ -27,12 +27,17 @@
     <script type="module">
         import {consoleFlash} from '/GitForum/modules/classes.js';
         import {displayNavLinks} from '/GitForum/modules/ui.js';
+        import {instantiateAPI, loadPosts, loadBoards} from '/GitForum/modules/load.js';
+
         var version = "{{ site.version }}"
         console.log(consoleFlash);
         console.log('%cGitForum', 'font-size: 40px; color: #FF69B4');
         console.log("v" + version);
 
-        displayNavLinks();
+        (async () => {
+            displayNavLinks(window.octokit);
+        })();
+
 
         // initialise tooltips https://getbootstrap.com/docs/5.1/components/tooltips/
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))

@@ -1,20 +1,41 @@
+<style>
+    @media only screen and (min-width: 992px) {
+        #navbarButtonForm {
+            position: absolute; 
+            right: 0px;
+        }
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand" href="/GitForum/">
             <img class="d-inline-block align-text-top" height="24" src="assets/branding/logo.png">
         </a>
+
+        <form id="navbarButtonForm" class="d-flex ms-auto">
+            <div style="height: 38px;" class="dropdown me-2">
+                <input alt="user" class="rounded" id="userButton" role="button" data-bs-toggle="dropdown" style="height: 100%;" aria-expanded="false" type="image" src="assets/placeholderAvatar.png">
+
+                <ul class="dropdown-menu" aria-labelledby="userBurron">
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                  </ul>
+            </div>
+
+            <a id="loginButton" class="me-2" href="login"><button type="button" class="btn btn-primary">Login</button></a>
+
+            <a class="me-2" href="newPost"><button type="button" class="btn btn-primary"><i class="bi bi-plus-lg"></i> <span class="d-md-none d-sm-none d-none d-lg-inline-block">New Post</span></button></a>
+        </form>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="navLinkContainer" class="navbar-nav mr-auto">
             </ul>
         </div>
 
-        <form class="navbar-nav ms-auto me-2">
-            <a href="newPost"><button type="button" class="btn btn-primary nav-item"><i class="bi bi-plus-lg"></i> <span class="d-md-none d-sm-none d-none d-lg-inline-block">New Post</span></button></a>
-        </form>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
 </nav>

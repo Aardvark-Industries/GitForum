@@ -71,6 +71,14 @@ async function displayPostPreviews(board) {
 async function displayNavLinks(){ // show links to each board in navbar
     var boards = await loadBoards();
 
+    var loggedIn = false;
+    if(Cookies.get('token')){
+        loggedIn = true;
+        document.getElementById("loginButton").style.display = "none";
+    } else {
+        document.getElementById("userButton").style.display = "none";
+    }
+
     boards.forEach(board => {
         var ul = document.createElement("li");
         ul.className = "nav-item";

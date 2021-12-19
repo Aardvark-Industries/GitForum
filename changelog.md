@@ -3,6 +3,11 @@ title: changelog
 layout: page
 ---
 
+## V0.2.1b
+*19/12/2021*
+- Info on setting up token
+- 'show token' button on login page
+
 # v0.2b
 *19/12/2021*
 - Comment support!

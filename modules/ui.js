@@ -24,6 +24,16 @@ function displayPostPreview(post){ // display post preview on board overview
 
     postTitleContainer.appendChild(postTitle);
 
+    var DateTime = luxon.DateTime;
+
+    var postInfo = document.createElement("p");
+    postInfo.innerHTML = "posted by <a href='https://github.com/" + post.author + "'>" + post.author + "</a> "
+
+    var postInfoTime = document.createElement("span");
+    postInfoTime.innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
+
+    postInfo.appendChild(postInfoTime);
+
     var postContent = document.createElement("p");
     postContent.className = "card-text";
     postContent.innerText = post.content;
@@ -32,6 +42,7 @@ function displayPostPreview(post){ // display post preview on board overview
     postContentContainer.className = "col";
 
     postContentContainer.appendChild(postTitleContainer);
+    postContentContainer.appendChild(postInfo);
     postContentContainer.appendChild(postContent);
 
     //------------------------------------------

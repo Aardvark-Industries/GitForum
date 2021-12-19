@@ -27,7 +27,7 @@ async function getPost(octokit, owner, repo, issue_number) {
         issue_number: issue_number
     });
 
-    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0], issue.data.user.login, issue.data.created_at);
+    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0], issue.data.user.login, issue.data.created_at, issue.data.comments);
 }
 
 async function getBoard(octokit, owner, repo, name) {
@@ -46,10 +46,15 @@ async function loadPosts(octokit, board) {
         owner: 'Aardvark-Industries',
         repo: 'GitForum-content',
         labels: [board.name]
-    })
+    });
 
     var posts = [];
-    issues.data.forEach(issue => posts.push(new Post(issue.number, issue.title, issue.body, board.name, issue.user.login, "", issue.comments)));
+
+    for (const issue of issues.data){
+        var post = await getPost(octokit, 'Aardvark-Industries', 'GitForum-content', issue.number);
+        posts.push(post);
+    };
+
 
     return posts;
 }

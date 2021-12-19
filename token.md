@@ -44,3 +44,5 @@ Simply put, a PAT is a code that we attach to the post when we send it to GitHub
 Now, when you're logging in, just type your GitHub username and the provided token, and log in!
 
 ![screenshot](assets/tokensetup/4.png)
+
+<small id="fn1">[1] just--well, obviously you've got to look at everything else to find `public_repo`, but as soon as you've looked at it and it doesn't say `public_repo`, look at something else, look at the next thing. Alright? But don't touch anything else or look at any--well, look at other things but don't, you understand.</small>

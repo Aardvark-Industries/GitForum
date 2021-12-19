@@ -17,7 +17,7 @@ Simply put, a PAT is a code that we attach to the post when we send it to GitHub
 
 2. Go to your [account settings](https://github.com/settings/tokens)
 - Go to Developer Settings > Personal Access Tokens
-- ![screenshot](assets/tokensetup/1.png)
+- ![screenshot](assets/tokenSetup/1.png)
 
 3. Select ['Generate new token'](https://github.com/settings/tokens/new)
 
@@ -29,11 +29,11 @@ Simply put, a PAT is a code that we attach to the post when we send it to GitHub
 
 6. Name your token (optional)
 - You can choose a note for your token so you recognise it in the list, for example 'GitForum Token'
-- ![screenshot](assets/tokensetup/2.png)
+- ![screenshot](assets/tokenSetup/2.png)
 
 7. Generate it
 - Click the 'Generate token' button
-- ![screenshot](assets/tokensetup/3.png)
+- ![screenshot](assets/tokenSetup/3.png)
 
 8. Write it down somewhere
 - Once generated, you can only view your token once. Make sure to save it into a text file or something if you want to log in again. 
@@ -43,6 +43,6 @@ Simply put, a PAT is a code that we attach to the post when we send it to GitHub
 ## How do I use it?
 Now, when you're logging in, just type your GitHub username and the provided token, and log in!
 
-![screenshot](assets/tokensetup/4.png)
+![screenshot](assets/tokenSetup/4.png)
 
 <small id="fn1">[1] just--well, obviously you've got to look at everything else to find `public_repo`, but as soon as you've looked at it and it doesn't say `public_repo`, look at something else, look at the next thing. Alright? But don't touch anything else or look at any--well, look at other things but don't, you understand.</small>

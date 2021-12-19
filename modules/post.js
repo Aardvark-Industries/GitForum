@@ -9,6 +9,8 @@ async function sendPost(octokit, owner, repo, title, body, board) {
         body: body,
         labels: [board]
     });
+
+    window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
 }
 
 export {sendPost};

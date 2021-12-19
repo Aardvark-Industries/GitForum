@@ -3,17 +3,21 @@ title: changelog
 layout: page
 ---
 
-# v0.1.3b
+# v0.2b
+*19/12/2021*
+- Comment support!
+
+## v0.1.3b
 *19/12/2021*
 - Fix board badge on post
 - Back button on post
 
-# v0.1.2b
+## v0.1.2b
 *19/12/2021*
 - Consistency between loading one post and multiple
 - Show author and date on post preview
 
-# v0.1.1b
+## v0.1.1b
 *19/12/2021*
 - Redirect to board after posting
 - Show user profile picture on user icon

@@ -13,4 +13,16 @@ async function sendPost(octokit, owner, repo, title, body, board) {
     window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
 }
 
-export {sendPost};
+async function sendComment(octokit, owner, repo, issue_number, body) {
+    await octokit.rest.issues.createComment({
+        owner,
+        repo,
+        issue_number,
+        body,
+      });
+
+    document.getElementById("commentContent").value = "";
+    window.location.reload();
+}
+
+export {sendPost, sendComment};

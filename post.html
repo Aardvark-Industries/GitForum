@@ -30,6 +30,23 @@ title: Untitled Post
 
 <h2>Comments</h2>
 
+<div class="card">
+
+    <div class="card-header">
+        <span>Post a comment</span>
+    </div>
+
+    <form class="card-body">
+        <div class="mb-3 form-floating">
+            <textarea id="commentContent" class="form-control" id="commentContent" style="min-height: 5rem;"></textarea>
+            <label for="commentContent" class="form-label">Type your comment</label>
+        </div>
+        <button id="submitCommentButton" type="button" class="btn btn-primary">Post</button>
+    </form>
+</div>
+
+<br>
+
 <div id="postComments">
     <div id="commentsLoading">
         <strong>Loading comments... </strong>
@@ -43,6 +60,7 @@ title: Untitled Post
     import {getPostFromURL} from '/{{ site.repo }}/modules/classes.js';
     import {displayComment} from '/{{ site.repo }}/modules/ui.js';
     import {URLParams, getPost, getComments} from '/{{ site.repo }}/modules/load.js';
+    import {sendComment} from '/{{ site.repo }}/modules/post.js';
 
     (async () => {
         // var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));
@@ -74,5 +92,12 @@ title: Untitled Post
 
         document.getElementById("commentsLoading").style.display = "none";
     })();
+
+    async function submitComment(){
+        await sendComment(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', URLParams.get("post"), document.getElementById("commentContent").value);
+        
+    }
+
+    document.getElementById("submitCommentButton").onclick = (() => {submitComment()});
         
 </script>

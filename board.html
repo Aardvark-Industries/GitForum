@@ -14,7 +14,12 @@ layout: default
 <h2>Latest posts</h2>
 
 <div class="container-fluid" id="postContainer">
-
+    <div id="postsLoading">
+        <strong>Loading posts... </strong>
+        <div id="postsLoadingSpinner" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </dv>
 </div>
 
 <script type="module">
@@ -30,6 +35,8 @@ layout: default
 
         document.title = "GitForum - " + board.name;
         
-        displayPostPreviews(window.OCTOKIT, board);
+        await displayPostPreviews(window.OCTOKIT, board);
+
+        document.getElementById("postsLoading").style.display = "none";
     })();
 </script>

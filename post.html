@@ -10,7 +10,7 @@ title: Untitled Post
 <p>
         Posted by <a class="text-decoration-none placeholder-glow" id="postAuthor"><span class="placeholder col-1"></span></a> in
         
-        <span class="badge rounded-pill bg-primary">
+        <span class="badge bg-primary">
             <a class="text-light text-decoration-none"  id="postBoard"></a>
         </span>
 
@@ -28,15 +28,25 @@ title: Untitled Post
     <span class="placeholder col-8"></span>
 </p>
 
+<h2>Comments</h2>
+
+<div id="postComments">
+    <div id="commentsLoading">
+        <strong>Loading comments... </strong>
+        <div id="postsLoadingSpinner" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </dv>
+</div>
+
 <script type="module">
     import {getPostFromURL} from '/{{ site.repo }}/modules/classes.js';
-    import {URLParams, getPost} from '/{{ site.repo }}/modules/load.js';
+    import {displayComment} from '/{{ site.repo }}/modules/ui.js';
+    import {URLParams, getPost, getComments} from '/{{ site.repo }}/modules/load.js';
 
     (async () => {
         // var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));
         var post = await getPost(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', URLParams.get('post'));
-
-        console.log(post);
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;
@@ -55,6 +65,14 @@ title: Untitled Post
         document.getElementById("postTime").setAttribute('data-bs-original-title', document.getElementById("postTime").dataset.title); // set bootstrap tooltip as well
 
         document.title = "GitForum - " + post.title;
+
+        //============================
+
+        var comments = await getComments(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', post.id);
+        
+        comments.reverse().forEach(comment => displayComment(comment, post));
+
+        document.getElementById("commentsLoading").style.display = "none";
     })();
         
 </script>

@@ -115,4 +115,61 @@ async function displayNavLinks(octokit){ // show links to each board in navbar
     })
 }
 
-export {displayPostPreviews, displayNavLinks};
+function displayComment(comment, post){
+    var commentsContainer = document.getElementById("postComments");
+
+        var commentContainer = document.createElement("div");
+        commentContainer.className = "card mb-2";
+
+            var commentHeader = document.createElement("div");
+            commentHeader.className = "card-header";
+
+                var commentIcon = document.createElement("img");
+                commentIcon.height = 32;
+                commentIcon.src = comment.user.avatar_url;
+                commentIcon.className = "me-2 rounded";
+
+                if(post.author == comment.user.login){
+                    var commentBadge = document.createElement("span");
+                    commentBadge.innerText = "OP";
+                    commentBadge.className = "badge bg-primary ms-1";
+                }
+
+                var commentAuthor = document.createElement("a");
+                commentAuthor.innerText = comment.user.login;
+                commentAuthor.href = comment.user.url;
+                commentAuthor.className = "fw-bold";
+
+                var commentInter1 = document.createElement("span");
+                commentInter1.innerText = " commented  "
+
+                var commentTime = document.createElement("span");
+
+                var DateTime = luxon.DateTime;
+                commentTime.innerText = DateTime.fromISO(comment.created_at).toRelative().toLocaleString(DateTime.DATETIME_MED);
+
+            commentHeader.appendChild(commentIcon);
+            commentHeader.appendChild(commentAuthor);
+
+            if(post.author == comment.user.login){
+                commentHeader.appendChild(commentBadge);
+            }
+
+            commentHeader.appendChild(commentInter1);
+            commentHeader.appendChild(commentTime);
+        commentContainer.appendChild(commentHeader);
+        
+        var commentBody = document.createElement("div");
+        commentBody.className = "card-body"
+        
+            var commentText = document.createElement("p");
+            commentText.innerText = comment.body;
+            commentText.className = "mb-0";
+
+            commentBody.appendChild(commentText);
+        commentContainer.appendChild(commentBody);
+
+    commentsContainer.appendChild(commentContainer);
+}
+
+export {displayPostPreviews, displayNavLinks, displayComment};

@@ -8,12 +8,12 @@ title: Login
 
     <form class="mt-4">
         <div class="form-floating">
-            <input style="margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" type="text" class="form-control" id="floatingInput" placeholder="Username">
+            <input id="username-input" style="margin-bottom: -1px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" type="text" class="form-control" placeholder="Username">
             <label for="floatingInput">Username</label>
         </div>
 
         <div class="form-floating">
-            <input id="token-input" style="margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0;" type="password" class="form-control" id="floatingInput" placeholder="Username">
+            <input id="token-input" style="margin-bottom: 10px; border-top-left-radius: 0; border-top-right-radius: 0;" type="password" class="form-control"" placeholder="Username">
             <label for="floatingInput">Token</label>
         </div>
 
@@ -26,6 +26,6 @@ title: Login
     import {setTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
 
     // document.getElementById("login-button").onclick = 'setTokenCookie(document.getElementById("token-input"))';
-    document.getElementById("login-button").onclick = (() => {setTokenCookie(document.getElementById("token-input").value); location.href="{{ site.baseurl }}/"});
+    document.getElementById("login-button").onclick = (() => {setTokenCookie(document.getElementById("token-input").value, document.getElementById("username-input").value); location.href="{{ site.baseurl }}/"});
     // console.log(document.getElementById("login-button"));
 </script>

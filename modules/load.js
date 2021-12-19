@@ -27,7 +27,7 @@ async function getPost(octokit, owner, repo, issue_number) {
         issue_number: issue_number
     });
 
-    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0], issue.data.user.login, issue.data.created_at, issue.data.comments);
+    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0].name, issue.data.user.login, issue.data.created_at, issue.data.comments);
 }
 
 async function getBoard(octokit, owner, repo, name) {

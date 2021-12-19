@@ -16,7 +16,7 @@ function displayPostPreview(post){ // display post preview on board overview
     postBody.className = "card-body row";
 
     var postTitleContainer = document.createElement("a");
-    postTitleContainer.href = "post?post=" + post.id + "&board=" + post.board;
+    postTitleContainer.href = "post?post=" + post.id;
 
     var postTitle = document.createElement("h5");
     postTitle.className = "card-title";

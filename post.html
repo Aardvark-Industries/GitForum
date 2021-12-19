@@ -3,6 +3,8 @@ layout: default
 title: Untitled Post
 ---
 
+<a id="backLink"><i class="bi bi-chevron-left"></i> Back</a>
+
 <h1 id="postTitle" class="display-4 placeholder-glow"><span class="placeholder col-7"></span></h1>
 
 <p>
@@ -39,11 +41,13 @@ title: Untitled Post
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;
 
-        document.getElementById("postBoard").innerText = URLParams.get("board");
-        document.getElementById("postBoard").href = "/" + URLParams.get("board");
+        document.getElementById("postBoard").innerText = post.board;
+        document.getElementById("postBoard").href = "board?board=" + post.board;
 
         document.getElementById("postAuthor").innerText = post.author;
         document.getElementById("postAuthor").href = "/user?user=" + post.author;
+
+        document.getElementById("backLink").href = "board?board=" + post.board;
 
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);

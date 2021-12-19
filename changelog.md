@@ -3,6 +3,11 @@ title: changelog
 layout: page
 ---
 
+# v0.1.3b
+*19/12/2021*
+- Fix board badge on post
+- Back button on post
+
 # v0.1.2b
 *19/12/2021*
 - Consistency between loading one post and multiple

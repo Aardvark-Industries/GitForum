@@ -6,6 +6,7 @@ layout: page
 This site uses cookies to store some information. Big surprise, most sites do these days. But don't worry, you don't need to worry about them, or opt in, or opt out. In fact, here's everything we store with cookies.
 
 - Your user token, so we can keep you logged in when you visit a different page.
+- Your username, so we can load your profile picture.
 
 **That's it.** We don't collect your personal info. We don't target ads at you (because there are none on this website).
 

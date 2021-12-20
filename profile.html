@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<h1 class="display-4 placeholder-glow" id="pageTitle"><span class="placeholder col-7"></span></h1>
+<h2 class="lead" id="pageDescription">
+    <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
+    <span class="placeholder col-4"></span>
+    <span class="placeholder col-6"></span>
+    <span class="placeholder col-8"></span>
+</h2>
+<hr class="my-4">
+
+<h2>Latest posts</h2>
+
+<div class="container-fluid" id="postContainer">
+    <div id="postsLoading">
+        <strong>Loading posts... </strong>
+        <div id="postsLoadingSpinner" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </dv>
+</div>
+
+<script type="module">
+    import {URLParams, getBoard, getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
+    import {displayUserPostPreviews} from '/{{ site.repo }}/modules/ui.js';
+
+    (async () => {
+        var authenticatedUser = await getAuthenticatedUser(window.OCTOKIT);
+
+        document.getElementById("pageTitle").innerText = authenticatedUser; // set title
+        document.getElementById("pageDescription").innerText = "Here you can view all the posts you have made across the entirety of GitForum."; // set description
+
+        document.title = "GitForum - " + authenticatedUser;
+        
+        await displayUserPostPreviews(window.OCTOKIT);
+
+        document.getElementById("postsLoading").style.display = "none";
+    })();
+</script>

@@ -2,6 +2,9 @@
 title: changelog
 layout: page
 ---
+## v0.2.3b
+*20/12/2021*
+- Add user profile page
 
 ## v0.2.2b
 *20/12/2021*

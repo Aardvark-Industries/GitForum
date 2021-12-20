@@ -50,12 +50,27 @@ async function getComments(octokit, owner, repo, issue_number) {
     return comments.data;
 }
 
+async function getAuthenticatedUser(octokit) {
+    return await (await octokit.rest.users.getAuthenticated()).data.login;
+}
+
 async function loadPosts(octokit, board) {
-    //var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues?labels=' + board.name)).json();
     var issues = await octokit.rest.issues.listForRepo({
         owner: window.OWNER,
         repo: window.REPO,
         labels: [board.name]
+    });
+
+    return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
+}
+
+async function loadUserPosts(octokit) {
+    var authenticatedUser = await getAuthenticatedUser(octokit);
+
+    var issues = await octokit.rest.issues.listForRepo({
+        owner: window.OWNER,
+        repo: window.REPO,
+        creator: authenticatedUser
     });
 
     return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
@@ -72,4 +87,4 @@ async function loadBoards(octokit) {
     return labels.data.map(label => new Board(label.name, label.description));
 }
 
-export {URLParams, instantiateAPI, getPost, getComments, getBoard, loadPosts, loadBoards};
+export {URLParams, instantiateAPI, getPost, getComments, getAuthenticatedUser, getBoard, loadPosts, loadUserPosts, loadBoards};

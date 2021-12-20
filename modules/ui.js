@@ -1,7 +1,7 @@
 ---
 ---
 
-import {URLParams, loadPosts, loadBoards} from '/{{ site.repo }}/modules/load.js';
+import {URLParams, loadPosts, loadUserPosts, loadBoards} from '/{{ site.repo }}/modules/load.js';
 
 var postContainer = document.getElementById("postContainer");
 var navLinkContainer = document.getElementById("navLinkContainer")
@@ -79,7 +79,14 @@ function displayPostPreview(post){ // display post preview on board overview
 async function displayPostPreviews(octokit, board) {
     var posts = await loadPosts(octokit, board);
     
-    posts.forEach(post => displayPostPreview(post))
+    posts.forEach(post => displayPostPreview(post));
+}
+
+async function displayUserPostPreviews(octokit) {
+    var posts = await loadUserPosts(octokit);
+
+    posts.forEach(post => displayPostPreview(post));
+
 }
 
 async function displayNavLinks(octokit){ // show links to each board in navbar
@@ -172,4 +179,4 @@ function displayComment(comment, post){
     commentsContainer.appendChild(commentContainer);
 }
 
-export {displayPostPreviews, displayNavLinks, displayComment};
+export {displayPostPreviews, displayUserPostPreviews, displayNavLinks, displayComment};

@@ -33,7 +33,7 @@ function displayPostPreview(post, board){ // display post preview on board overv
     var DateTime = luxon.DateTime;
 
     var postInfo = document.createElement("p");
-    postInfo.innerHTML = "posted by <a href='https://github.com/" + post.author + "'>" + post.author + "</a> in ";
+    postInfo.innerHTML = "posted by <a href='user?board=user&user=" + post.author + "'>" + post.author + "</a> in ";
 
     var postInfoTime = document.createElement("span");
     postInfoTime.innerText = " " + DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
@@ -95,11 +95,10 @@ async function displayPostPreviews(octokit, board) {
     posts.forEach(post => displayPostPreview(post));
 }
 
-async function displayUserPostPreviews(octokit) {
-    var posts = await loadUserPosts(octokit);
+async function displayUserPostPreviews(octokit, user) {
+    var posts = await loadUserPosts(octokit, user);
 
     posts.forEach(post => displayPostPreview(post, "user"));
-
 }
 
 async function displayNavLinks(octokit){ // show links to each board in navbar
@@ -157,7 +156,7 @@ function displayComment(comment, post){
 
                 var commentAuthor = document.createElement("a");
                 commentAuthor.innerText = comment.user.login;
-                commentAuthor.href = comment.user.url;
+                commentAuthor.href = "user?board=user&user=" + comment.user.login;
                 commentAuthor.className = "fw-bold";
 
                 var commentInter1 = document.createElement("span");

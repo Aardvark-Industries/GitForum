@@ -23,18 +23,19 @@ layout: default
 </div>
 
 <script type="module">
-    import {URLParams, getBoard, getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
+    import {URLParams, getBoard, getUser} from '/{{ site.repo }}/modules/load.js';
     import {displayUserPostPreviews} from '/{{ site.repo }}/modules/ui.js';
 
     (async () => {
-        var authenticatedUser = await getAuthenticatedUser(window.OCTOKIT);
+        // var user = await getUser(window.OCTOKIT, URLParams.get('user'));
+        var user = URLParams.get('user');
 
-        document.getElementById("pageTitle").innerText = authenticatedUser; // set title
-        document.getElementById("pageDescription").innerText = "Here you can view all the posts you have made across the entirety of GitForum."; // set description
+        document.getElementById("pageTitle").innerText = user; // set title
+        document.getElementById("pageDescription").innerText = "Here you can view all the posts made by " + user + "."; // set description
 
-        document.title = "GitForum - " + authenticatedUser;
+        document.title = "GitForum - " + user;
         
-        await displayUserPostPreviews(window.OCTOKIT, authenticatedUser);
+        await displayUserPostPreviews(window.OCTOKIT, user);
 
         document.getElementById("postsLoading").style.display = "none";
     })();

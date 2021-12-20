@@ -2,6 +2,11 @@
 title: changelog
 layout: page
 ---
+## v0.3.0b
+*20/12/2021*
+- Bot support to fix labelling issue
+- Add user pages
+
 ## v0.2.5b
 *20/12/2021*
 - Add board link to profile post previews
@@ -12,7 +17,7 @@ layout: page
 
 ## v0.2.3b
 *20/12/2021*
-- Add user profile page
+- Add current user profile page
 
 ## v0.2.2b
 *20/12/2021*

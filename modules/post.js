@@ -9,7 +9,7 @@ async function sendPost(octokit, owner, repo, title, body, board) {
         body: body,
     });
 
-    //window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
+    window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
 }
 
 async function sendComment(octokit, owner, repo, issue_number, body) {

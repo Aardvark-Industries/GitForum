@@ -5,42 +5,42 @@
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait",
-    "background_color": "#fff",
-    "theme_color": "#640700",
+    "background_color": "#ffffff",
+    "theme_color": "#db2573",
     "newBranch":"true",
     "icons": [
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "48x48"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "96x96"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "sizes": "128x128",
         "type": "image/png"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "sizes": "144x144",
         "type": "image/png"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "256x256"
       },
       {
-        "src": "assets/branding/icon.png",
+        "src": "/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }

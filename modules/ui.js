@@ -192,4 +192,29 @@ function displayComment(comment, post){
     commentsContainer.appendChild(commentContainer);
 }
 
-export {displayPostPreviews, displayUserPostPreviews, displayNavLinks, displayComment};
+function errorMessage(error, icon){
+    var errorElem = document.createElement("div");
+    errorElem.className = "alert alert-danger alert-dismissible fade show shadow";
+    errorElem.role="alert";
+
+    var iconElem = document.createElement("i");
+    iconElem.className = "bi bi-" + icon;
+    iconElem.innerText = " ";
+
+    var errorText = document.createElement("span");
+    errorText.innerText = error;
+
+    var dismissButton = document.createElement("button");
+    dismissButton.type="button";
+    dismissButton.className="btn-close";
+    dismissButton.setAttribute("data-bs-dismiss", "alert");
+    dismissButton.ariaLabel = "close";
+
+    errorElem.appendChild(iconElem);
+    errorElem.appendChild(errorText);
+    errorElem.appendChild(dismissButton);
+
+    document.getElementById("alertContainer").appendChild(errorElem);
+}
+
+export {displayPostPreviews, displayUserPostPreviews, displayNavLinks, displayComment, errorMessage};

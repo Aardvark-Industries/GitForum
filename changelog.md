@@ -2,10 +2,11 @@
 title: changelog
 layout: page
 ---
-## v0.3.0b
+## v0.3b
 *20/12/2021*
 - Bot support to fix labelling issue
 - Add user pages
+- Add profile picture to profile page
 
 ## v0.2.5b
 *20/12/2021*

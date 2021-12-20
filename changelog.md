@@ -3,7 +3,11 @@ title: changelog
 layout: page
 ---
 
-## V0.2.1b
+## v0.2.2b
+*20/12/2021*
+- Put back link inside button
+
+## v0.2.1b
 *19/12/2021*
 - Info on setting up token
 - 'show token' button on login page

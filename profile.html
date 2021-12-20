@@ -2,6 +2,7 @@
 layout: default
 ---
 
+<img style="max-width: 100%;" class="rounded" id="profilePic">
 <h1 class="display-4 placeholder-glow" id="pageTitle"><span class="placeholder col-7"></span></h1>
 <h2 class="lead" id="pageDescription">
     <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
@@ -31,6 +32,7 @@ layout: default
 
         document.getElementById("pageTitle").innerText = authenticatedUser; // set title
         document.getElementById("pageDescription").innerText = "Here you can view all the posts you have made across the entirety of GitForum."; // set description
+        document.getElementById("profilePic").src = "https://github.com/" + authenticatedUser + ".png";
 
         document.title = "GitForum - " + authenticatedUser;
         

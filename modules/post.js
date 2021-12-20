@@ -5,12 +5,11 @@ async function sendPost(octokit, owner, repo, title, body, board) {
     octokit.rest.issues.create({
         owner: owner,
         repo: repo,
-        title: title, 
+        title: "[" + board + "]" + title, 
         body: body,
-        labels: [board]
     });
 
-    window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
+    //window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
 }
 
 async function sendComment(octokit, owner, repo, issue_number, body) {

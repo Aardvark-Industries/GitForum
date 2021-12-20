@@ -78,8 +78,12 @@ title: Untitled Post
         document.getElementById("postAuthor").innerText = post.author;
         document.getElementById("postAuthor").href = "/user?user=" + post.author;
 
-        document.getElementById("backLink").href = "board?board=" + post.board;
-
+        if (URLParams.get('prev') == "user") {
+            document.getElementById("backLink").href = "profile.html";
+        } else {
+            document.getElementById("backLink").href = "board?board=" + post.board;
+        }
+        
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
         document.getElementById("postTime").setAttribute('data-title', DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED));

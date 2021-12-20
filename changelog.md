@@ -2,6 +2,10 @@
 title: changelog
 layout: page
 ---
+## v0.2.4b
+*20/12/2021*
+- Fix back button on posts opened from profile page
+
 ## v0.2.3b
 *20/12/2021*
 - Add user profile page

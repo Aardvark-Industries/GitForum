@@ -6,7 +6,7 @@ import {URLParams, loadPosts, loadUserPosts, loadBoards} from '/{{ site.repo }}/
 var postContainer = document.getElementById("postContainer");
 var navLinkContainer = document.getElementById("navLinkContainer")
 
-function displayPostPreview(post){ // display post preview on board overview
+function displayPostPreview(post, board){ // display post preview on board overview
 
     var postObject = document.createElement("div");
     postObject.className = "card mb-4";
@@ -16,7 +16,13 @@ function displayPostPreview(post){ // display post preview on board overview
     postBody.className = "card-body row";
 
     var postTitleContainer = document.createElement("a");
-    postTitleContainer.href = "post?post=" + post.id;
+
+    if (board == "user") {
+        postTitleContainer.href = "post?post=" + post.id + "&prev=user";
+    } else {
+        postTitleContainer.href = "post?post=" + post.id;
+    }
+    
 
     var postTitle = document.createElement("h5");
     postTitle.className = "card-title";
@@ -85,7 +91,7 @@ async function displayPostPreviews(octokit, board) {
 async function displayUserPostPreviews(octokit) {
     var posts = await loadUserPosts(octokit);
 
-    posts.forEach(post => displayPostPreview(post));
+    posts.forEach(post => displayPostPreview(post, "user"));
 
 }
 

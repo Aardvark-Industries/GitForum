@@ -67,8 +67,7 @@ title: Untitled Post
     import {sendComment} from '/{{ site.repo }}/modules/post.js';
 
     (async () => {
-        // var post = await getPostFromURL('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues/' + URLParams.get('post'));
-        var post = await getPost(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', URLParams.get('post'));
+        var post = await getPost(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('post'));
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;
@@ -90,7 +89,7 @@ title: Untitled Post
 
         //============================
 
-        var comments = await getComments(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', post.id);
+        var comments = await getComments(window.OCTOKIT, window.OWNER, window.REPO, post.id);
         
         comments.reverse().forEach(comment => displayComment(comment, post));
 
@@ -98,7 +97,7 @@ title: Untitled Post
     })();
 
     async function submitComment(){
-        await sendComment(window.OCTOKIT, 'Aardvark-Industries', 'GitForum-content', URLParams.get("post"), document.getElementById("commentContent").value);
+        await sendComment(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get("post"), document.getElementById("commentContent").value);
         
     }
 

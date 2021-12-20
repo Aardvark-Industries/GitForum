@@ -53,20 +53,20 @@ async function getComments(octokit, owner, repo, issue_number) {
 async function loadPosts(octokit, board) {
     //var issues = await (await fetch('https://api.github.com/repos/Aardvark-Industries/GitForum-content/issues?labels=' + board.name)).json();
     var issues = await octokit.rest.issues.listForRepo({
-        owner: 'Aardvark-Industries',
-        repo: 'GitForum-content',
+        owner: window.OWNER,
+        repo: window.REPO,
         labels: [board.name]
     });
 
-    return await Promise.all(issues.data.map(issue => getPost(octokit, 'Aardvark-Industries', 'GitForum-content', issue.number)));
+    return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
 }
 
 async function loadBoards(octokit) {
     if (window.BOARDS != undefined) { return window.BOARDS }
 
     var labels = await octokit.rest.issues.listLabelsForRepo({
-        owner: 'Aardvark-Industries',
-        repo: 'GitForum-content'
+        owner: window.OWNER,
+        repo: window.REPO
     });
 
     return labels.data.map(label => new Board(label.name, label.description));

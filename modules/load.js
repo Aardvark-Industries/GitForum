@@ -54,6 +54,10 @@ async function getAuthenticatedUser(octokit) {
     return await (await octokit.rest.users.getAuthenticated()).data.login;
 }
 
+async function getUser(octokit, username) {
+    return await (await octokit.rest.users.getByUsername(username)).data.login;
+}
+
 async function loadPosts(octokit, board) {
     var issues = await octokit.rest.issues.listForRepo({
         owner: window.OWNER,
@@ -64,13 +68,11 @@ async function loadPosts(octokit, board) {
     return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
 }
 
-async function loadUserPosts(octokit) {
-    var authenticatedUser = await getAuthenticatedUser(octokit);
-
+async function loadUserPosts(octokit, user) {
     var issues = await octokit.rest.issues.listForRepo({
         owner: window.OWNER,
         repo: window.REPO,
-        creator: authenticatedUser
+        creator: user
     });
 
     return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
@@ -87,4 +89,4 @@ async function loadBoards(octokit) {
     return labels.data.map(label => new Board(label.name, label.description));
 }
 
-export {URLParams, instantiateAPI, getPost, getComments, getAuthenticatedUser, getBoard, loadPosts, loadUserPosts, loadBoards};
+export {URLParams, instantiateAPI, getPost, getComments, getAuthenticatedUser, getUser, getBoard, loadPosts, loadUserPosts, loadBoards};

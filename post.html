@@ -76,7 +76,7 @@ title: Untitled Post
         document.getElementById("postBoard").href = "board?board=" + post.board;
 
         document.getElementById("postAuthor").innerText = post.author;
-        document.getElementById("postAuthor").href = "/user?user=" + post.author;
+        document.getElementById("postAuthor").href = "user?board=user&user=" + post.author;
 
         if (URLParams.get('prev') == "user") {
             document.getElementById("backLink").href = "profile.html";

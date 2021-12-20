@@ -10,37 +10,37 @@
     "newBranch":"true",
     "icons": [
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "48x48"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "96x96"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "sizes": "128x128",
         "type": "image/png"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "sizes": "144x144",
         "type": "image/png"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "256x256"
       },
       {
-        "src": "/assets/branding/icon.png",
+        "src": "/GitForum/assets/branding/icon.png",
         "type": "image/png",
         "sizes": "512x512"
       }

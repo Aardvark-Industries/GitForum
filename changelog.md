@@ -2,6 +2,10 @@
 title: changelog
 layout: page
 ---
+## v0.2.5b
+*20/12/2021*
+- Add board link to profile post previews
+
 ## v0.2.4b
 *20/12/2021*
 - Fix back button on posts opened from profile page

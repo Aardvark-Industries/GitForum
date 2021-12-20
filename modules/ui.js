@@ -33,13 +33,20 @@ function displayPostPreview(post, board){ // display post preview on board overv
     var DateTime = luxon.DateTime;
 
     var postInfo = document.createElement("p");
-    postInfo.innerHTML = "posted by <a href='https://github.com/" + post.author + "'>" + post.author + "</a> "
+    postInfo.innerHTML = "posted by <a href='https://github.com/" + post.author + "'>" + post.author + "</a> in ";
 
     var postInfoTime = document.createElement("span");
-    postInfoTime.innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
+    postInfoTime.innerText = " " + DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
 
+    if (board == "user") {
+        var postInfoBoard = document.createElement("span");
+        postInfoBoard.className = "badge bg-primary";
+        postInfoBoard.innerHTML = "<a class='text-light text-decoration-none' id='postBoard' href='board?board=" + post.board + "'>" + post.board + "</a>";
+        postInfo.appendChild(postInfoBoard);
+    }
+    
     postInfo.appendChild(postInfoTime);
-
+    
     var postContent = document.createElement("p");
     postContent.className = "card-text";
     postContent.innerText = post.content;

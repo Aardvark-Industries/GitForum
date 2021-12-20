@@ -58,15 +58,7 @@ async function loadPosts(octokit, board) {
         labels: [board.name]
     });
 
-    var posts = [];
-
-    for (const issue of issues.data){
-        var post = await getPost(octokit, 'Aardvark-Industries', 'GitForum-content', issue.number);
-        posts.push(post);
-    };
-
-
-    return posts;
+    return await Promise.all(issues.data.map(issue => getPost(octokit, 'Aardvark-Industries', 'GitForum-content', issue.number)));
 }
 
 async function loadBoards(octokit) {
@@ -77,12 +69,7 @@ async function loadBoards(octokit) {
         repo: 'GitForum-content'
     });
 
-    var boards = [];
-    labels.data.forEach(label => boards.push(new Board(label.name, label.description)));
-     
-    // replace forEach with map at some point
-
-    return boards;
+    return labels.data.map(label => new Board(label.name, label.description));
 }
 
 export {URLParams, instantiateAPI, getPost, getComments, getBoard, loadPosts, loadBoards};

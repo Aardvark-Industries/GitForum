@@ -69,7 +69,7 @@ function displayPostPreview(post, board){ // display post preview on board overv
 
     var postCommentIndicator = document.createElement("span");
     postCommentIndicator.className = "badge bg-secondary";
-    postCommentIndicator.style = ""
+    postCommentIndicator.style = "";
     postCommentIndicator.innerText = post.comments.toString() + " ";
 
     var postCommentIcon = document.createElement("i");
@@ -77,8 +77,32 @@ function displayPostPreview(post, board){ // display post preview on board overv
     postCommentIcon.style = "";
 
     postCommentIndicator.appendChild(postCommentIcon);
-
     postBadgeContainer.appendChild(postCommentIndicator);
+
+    var postUpvoteIndicator = document.createElement("span");
+    postUpvoteIndicator.className = "badge bg-secondary";
+    postUpvoteIndicator.style = "";
+    postUpvoteIndicator.innerText = post.upvotes.toString() + " ";
+
+    var postUpvoteIcon = document.createElement("i");
+    postUpvoteIcon.className = "bi bi-chevron-up";
+    postUpvoteIcon.style = "";
+
+    postUpvoteIndicator.appendChild(postUpvoteIcon);
+    postBadgeContainer.appendChild(postUpvoteIndicator);
+
+    var postDownvoteIndicator = document.createElement("span");
+    postDownvoteIndicator.className = "badge bg-secondary";
+    postDownvoteIndicator.style = "";
+    postDownvoteIndicator.innerText = post.downvotes.toString() + " ";
+
+    var postDownvoteIcon = document.createElement("i");
+    postDownvoteIcon.className = "bi bi-chevron-down";
+    postDownvoteIcon.style = "";
+
+    postDownvoteIndicator.appendChild(postDownvoteIcon);
+    postBadgeContainer.appendChild(postDownvoteIndicator);
+    
     //------------------------------------------
 
     postBody.appendChild(postContentContainer);

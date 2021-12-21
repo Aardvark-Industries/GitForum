@@ -108,10 +108,12 @@ async function displayNavLinks(octokit){ // show links to each board in navbar
     if(Cookies.get('token')){
         loggedIn = true;
         document.getElementById("loginButton").style.display = "none";
+        document.getElementById("newPostButton").style.display = "inline-block";
+        document.getElementById("user-dropdown").style.display = "inline-block";
         document.getElementById("userButton").src = "https://github.com/" + Cookies.get('username') + ".png"
     } else {
         document.getElementById("userButton").style.display = "none";
-        document.getElementById("newPostButton").style.display = "none";
+        document.getElementById("loginButton").style.display = "inline-block";
     }
 
     document.getElementById("userButton").alt = "user";

@@ -1,15 +1,26 @@
 ---
 ---
 
-async function sendPost(octokit, owner, repo, title, body, board) {
-    octokit.rest.issues.create({
-        owner: owner,
-        repo: repo,
-        title: "[" + board + "]" + title, 
-        body: body,
-    });
+import { errorMessage } from '/{{ site.repo }}/modules/ui.js';
 
-    window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
+async function sendPost(octokit, owner, repo, title, body, board) {
+    var e;
+    try {
+        octokit.rest.issues.create({
+            owner: owner,
+            repo: repo,
+            title: "[" + board + "]" + title, 
+            body: body,
+        });
+
+    } catch (error) {
+        errorMessage("error Posting");
+        e = true;
+    }
+
+    if(!e){
+        //window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
+    }
 }
 
 async function sendComment(octokit, owner, repo, issue_number, body) {

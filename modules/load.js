@@ -20,6 +20,27 @@ async function instantiateAPI() {
     });
 }
 
+async function getPostVotes(octokit, owner, repo, issue_number) {
+    var reactions = await octokit.rest.reactions.listForIssue({
+        owner: owner,
+        repo: repo,
+        issue_number: issue_number
+    })
+
+    var upvotes = 0;
+    var downvotes = 0;
+
+    reactions.data.forEach(reaction => {
+        if (reaction.content == "+1") {
+            upvotes++;
+        } else if (reaction.content == "-1") {
+            downvotes++;
+        }
+    });
+
+    return [upvotes, downvotes];
+}
+
 async function getPost(octokit, owner, repo, issue_number) {
     var issue = await octokit.rest.issues.get({
         owner: owner,
@@ -27,7 +48,9 @@ async function getPost(octokit, owner, repo, issue_number) {
         issue_number: issue_number
     });
 
-    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0].name, issue.data.user.login, issue.data.created_at, issue.data.comments);
+    var votes = await getPostVotes(octokit, owner, repo, issue_number);
+
+    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0].name, issue.data.user.login, issue.data.created_at, issue.data.comments, votes[0], votes[1]);
 }
 
 async function getBoard(octokit, owner, repo, name) {

@@ -14,12 +14,12 @@
         </a>
 
         <form id="navbarButtonForm" class="d-flex ms-auto">
-            <div style="height: 38px;" class="dropdown me-2">
+            <div id="user-dropdown" style="height: 38px; display: none;" class="dropdown me-2">
                 <input alt=" " class="rounded" id="userButton" role="button" data-bs-toggle="dropdown" style="height: 100%;" aria-expanded="false" type="image">
 
                 <ul class="dropdown-menu" aria-labelledby="userBurron">
                     <li>
-                        <a id="profile-page-link" class="dropdown-item" href="/GitForum/profile.html">
+                        <a id="profile-page-link" class="dropdown-item" href="/GitForum/profile">
                             Profile
                         </a>
                     </li>
@@ -33,7 +33,7 @@
 
             <a id="loginButton" class="me-2" href="login"><button type="button" class="btn btn-primary"><i class="bi bi-door-open-fill"></i><span class="d-md-none d-sm-none d-none d-lg-inline-block">Login</span></button></a>
 
-            <a id="newPostButton" class="me-2" href="newPost"><button type="button" class="btn btn-primary"><i class="bi bi-plus-lg"></i> <span class="d-md-none d-sm-none d-none d-lg-inline-block">New Post</span></button></a>
+            <a id="newPostButton" class="me-2" href="newPost" style="display: none"><button type="button" class="btn btn-primary"><i class="bi bi-plus-lg"></i> <span class="d-md-none d-sm-none d-none d-lg-inline-block">New Post</span></button></a>
         </form>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

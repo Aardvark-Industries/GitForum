@@ -8,29 +8,44 @@ title: Untitled Post
     <i class="bi bi-chevron-left"></i>Back
 </a>
 
+<br><br>
 
-<h1 id="postTitle" class="display-4 placeholder-glow"><span class="placeholder col-7"></span></h1>
+<div class="card mb-4">
+    <div class="card-body row">
+        <div class="col">
+            <h1 id="postTitle" class="display-4 placeholder-glow"><span class="placeholder col-7"></span></h1>
 
-<p>
-        Posted by <a class="text-decoration-none placeholder-glow" id="postAuthor"><span class="placeholder col-1"></span></a> in
-        
-        <span class="badge bg-primary">
-            <a class="text-light text-decoration-none"  id="postBoard"></a>
-        </span>
+            <p>
+                    Posted by <a class="text-decoration-none placeholder-glow" id="postAuthor"><span class="placeholder col-1"></span></a> in
+                    
+                    <span class="badge bg-primary">
+                        <a class="text-light text-decoration-none"  id="postBoard"></a>
+                    </span>
 
-        <span class="placeholder-glow" data-bs-toggle="tooltip" data-title="Loading time..." id="postTime">
-            <span class="placeholder col-1"></span> ago
-        </span>
-    
-</p>
+                    <span class="placeholder-glow" data-bs-toggle="tooltip" data-title="Loading time..." id="postTime">
+                        <span class="placeholder col-1"></span> ago
+                    </span>
+                
+            </p>
 
+            <p id="postContent" class="lead placeholder-glow"><span class="placeholder col-7"></span>
+                <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
+                <span class="placeholder col-4"></span>
+                <span class="placeholder col-6"></span>
+                <span class="placeholder col-8"></span>
+            </p>
+        </div>
 
-<p id="postContent" class="lead placeholder-glow"><span class="placeholder col-7"></span>
-    <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
-    <span class="placeholder col-4"></span>
-    <span class="placeholder col-6"></span>
-    <span class="placeholder col-8"></span>
-</p>
+        <div class="col-1 text-end" style="box-sizing: content-box;">
+            <span id="post-upvotes" class="badge bg-secondary">
+            </span>
+
+            <span id="post-downvotes" class="badge bg-secondary">
+                <i class="bi bi-chevron-down"></i>
+            </span>
+        </div>
+    </div>
+</div>
 
 <h2>Comments</h2>
 
@@ -88,6 +103,9 @@ title: Untitled Post
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
         document.getElementById("postTime").setAttribute('data-title', DateTime.fromISO(post.date).toLocaleString(DateTime.DATETIME_MED));
         document.getElementById("postTime").setAttribute('data-bs-original-title', document.getElementById("postTime").dataset.title); // set bootstrap tooltip as well
+
+        document.getElementById('post-upvotes').innerHTML = post.upvotes + " <i class='bi bi-chevron-up'></i>";
+        document.getElementById('post-downvotes').innerHTML = post.downvotes  + " <i class='bi bi-chevron-down'></i>";
 
         document.title = "GitForum - " + post.title;
 

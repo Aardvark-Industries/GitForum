@@ -1,12 +1,15 @@
 ---
 ---
 
-import {URLParams, loadPosts, loadUserPosts, loadBoards} from '/{{ site.repo }}/modules/load.js';
+import {URLParams, loadPosts, loadUserPosts, loadBoards, getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
+import {getUserVoteState, upvotePost, downvotePost} from '/{{ site.repo }}/modules/vote.js';
+import {checkAuth} from '/{{ site.repo }}/modules/cookies.js';
+import Cookies from 'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.mjs';
 
 var postContainer = document.getElementById("postContainer");
 var navLinkContainer = document.getElementById("navLinkContainer")
 
-function displayPostPreview(post, board){ // display post preview on board overview
+function displayPostPreview(post, board, vote_state){ // display post preview on board overview
 
     var postObject = document.createElement("div");
     postObject.className = "card mb-4";
@@ -82,7 +85,13 @@ function displayPostPreview(post, board){ // display post preview on board overv
     var postUpvoteIndicator = document.createElement("span");
     postUpvoteIndicator.className = "badge bg-secondary";
     postUpvoteIndicator.style = "";
+    // postUpvoteIndicator.id = "post-upvotes";
+    // postUpvoteIndicator.onclick = (() => {upvotePost(window.OCTOKIT, window.OWNER, window.REPO, post.id)});
     postUpvoteIndicator.innerText = post.upvotes.toString() + " ";
+
+    if (vote_state == 1) {
+        postUpvoteIndicator.className = "badge bg-primary";
+    }
 
     var postUpvoteIcon = document.createElement("i");
     postUpvoteIcon.className = "bi bi-chevron-up";
@@ -94,12 +103,19 @@ function displayPostPreview(post, board){ // display post preview on board overv
     var postDownvoteIndicator = document.createElement("span");
     postDownvoteIndicator.className = "badge bg-secondary";
     postDownvoteIndicator.style = "";
+    // postDownvoteIndicator.id = "post-downvotes";
+    // postDownvoteIndicator.onclick = (() => {downvotePost(window.OCTOKIT, window.OWNER, window.REPO, post.id)});
     postDownvoteIndicator.innerText = post.downvotes.toString() + " ";
+
+    if (vote_state == -1) {
+        postDownvoteIndicator.className = "badge bg-primary";
+    }
 
     var postDownvoteIcon = document.createElement("i");
     postDownvoteIcon.className = "bi bi-chevron-down";
     postDownvoteIcon.style = "";
-
+    
+    
     postDownvoteIndicator.appendChild(postDownvoteIcon);
     postBadgeContainer.appendChild(postDownvoteIndicator);
     
@@ -116,13 +132,29 @@ function displayPostPreview(post, board){ // display post preview on board overv
 async function displayPostPreviews(octokit, board) {
     var posts = await loadPosts(octokit, board);
     
-    posts.forEach(post => displayPostPreview(post));
+    posts.forEach(async post => {
+        if (await checkAuth()) {
+            var authenticatedUser = await getAuthenticatedUser(octokit);
+            var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
+            displayPostPreview(post, "", userVoteState);
+        } else {
+            displayPostPreview(post, "" , 0);
+        }
+    });
 }
 
 async function displayUserPostPreviews(octokit, user) {
     var posts = await loadUserPosts(octokit, user);
 
-    posts.forEach(post => displayPostPreview(post, "user"));
+    posts.forEach(async post => {
+        if (await checkAuth()) {
+            var authenticatedUser = await getAuthenticatedUser(octokit);
+            var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
+            displayPostPreview(post, "user", userVoteState);
+        } else {
+            displayPostPreview(post, "user", 0);
+        }
+    });
 }
 
 async function displayNavLinks(octokit){ // show links to each board in navbar

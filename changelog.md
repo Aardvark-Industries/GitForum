@@ -2,6 +2,10 @@
 title: changelog
 layout: page
 ---
+## v0.3.1b
+*21/12/2021*
+- Voting support! (Posts only, comments soon)
+
 ## v0.3b
 *20/12/2021*
 - Bot support to fix labelling issue

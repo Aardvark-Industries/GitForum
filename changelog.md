@@ -2,6 +2,10 @@
 title: changelog
 layout: page
 ---
+## v0.3.2b
+*21/12/2021*
+- Temporary login fix
+
 ## v0.3.1b
 *21/12/2021*
 - Voting support! (Posts only, comments soon)

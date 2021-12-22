@@ -1,6 +1,7 @@
 ---
 title: How to Create a Personal Access Token (PAT) for GitForum
 layout: page
+permalink: /token
 ---
 
 ## What is a PAT?

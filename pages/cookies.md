@@ -1,6 +1,7 @@
 ---
 title: Cookies, and How We Use Them
 layout: page
+permalink: /cookies
 ---
 
 This site uses cookies to store some information. Big surprise, most sites do these days. But don't worry, you don't need to worry about them, or opt in, or opt out. In fact, here's everything we store with cookies.

@@ -1,6 +1,7 @@
 ---
 title: changelog
 layout: page
+permalink: /changelog
 ---
 ## v0.3.2b
 *21/12/2021*

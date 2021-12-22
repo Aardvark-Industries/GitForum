@@ -67,7 +67,8 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
     //------------------------------------------
 
     var postBadgeContainer = document.createElement("div");
-    postBadgeContainer.className = "col-1 text-end";
+    postBadgeContainer.className = "text-end";
+    postBadgeContainer.style.width="37.6px";
     postBadgeContainer.style.boxSizing = "content-box"; // forces badge inside card... at least until the screen gets really small
 
     var postCommentIndicator = document.createElement("span");
@@ -166,7 +167,8 @@ async function displayNavLinks(octokit){ // show links to each board in navbar
         document.getElementById("loginButton").style.display = "none";
         document.getElementById("newPostButton").style.display = "inline-block";
         document.getElementById("user-dropdown").style.display = "inline-block";
-        document.getElementById("userButton").src = "https://github.com/" + Cookies.get('username') + ".png"
+        document.getElementById("userButton").src = "https://github.com/" + Cookies.get('username') + ".png";
+        document.getElementById("profile-page-link").href = "user?user=" + Cookies.get('username');
     } else {
         document.getElementById("userButton").style.display = "none";
         document.getElementById("loginButton").style.display = "inline-block";

@@ -11,8 +11,8 @@ async function checkAuth() {
 }
 
 async function setTokenCookie(token, username) {
-    Cookies.set('token', token);
-    Cookies.set('username', username)
+    Cookies.set('token', token, {SameSite: lax});
+    Cookies.set('username', username, {SameSite: lax});
 }
 
 async function removeTokenCookie() {

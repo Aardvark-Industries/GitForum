@@ -3,6 +3,13 @@ title: changelog
 layout: page
 permalink: /changelog
 ---
+
+## v0.3.3b
+*21/12/2021*
+- Remove redundant profile page (just use user page)
+- Add profile pic to user page
+- Set SameSite attribute on cookies to hopefully stop them expiring
+
 ## v0.3.2b
 *21/12/2021*
 - Temporary login fix

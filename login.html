@@ -42,16 +42,16 @@ title: Login
 
 <script type="module">
     import {setTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
-    import {getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
+    import {getAuthenticatedUser, instantiateAPI} from '/{{ site.repo }}/modules/load.js';
 
     // document.getElementById("login-button").onclick = 'setTokenCookie(document.getElementById("token-input"))';
-    document.getElementById("login-button").onclick = (() => {
+    document.getElementById("login-button").onclick = (() => { 
         (async () => {
+                setTokenCookie(document.getElementById("token-input").value, undefined); // set token so API can authenticate in order to load username
+                window.OCTOKIT = await instantiateAPI();
                 var user = await getAuthenticatedUser(window.OCTOKIT);
-                console.log(user);
                 setTokenCookie(document.getElementById("token-input").value, user.login); 
                 location.href="{{ site.baseurl }}/"
         })();
     });
-    // console.log(document.getElementById("login-button"));
 </script>

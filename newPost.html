@@ -51,7 +51,6 @@ title: New Post
     })();
 
     async function submitPost(){
-        console.log(simplemde.value());
         await sendPost(window.OCTOKIT, window.OWNER, window.REPO, document.getElementById("postTitle").value, simplemde.value(), document.getElementById("boardSelector").value)
     }
     

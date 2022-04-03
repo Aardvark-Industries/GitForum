@@ -4,6 +4,11 @@ layout: page
 permalink: /changelog
 ---
 
+# v0.5b
+*03/04/2022*
+- Markdown support in posts!
+- New content policy
+
 # v0.4b
 *03/04/2022*
 - Replace useless text with user bio on profile page

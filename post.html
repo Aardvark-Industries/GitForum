@@ -55,6 +55,7 @@ title: Untitled Post
     </div>
 
     <form class="card-body">
+        <p class="text-muted">Your comment must adhere to the <a href="/GitForum/content-policy">content policy.</a></p>
         <div class="mb-3 form-floating">
             <textarea id="commentContent" class="form-control" id="commentContent" style="min-height: 5rem;"></textarea>
             <label for="commentContent" class="form-label">Type your comment</label>
@@ -90,7 +91,7 @@ title: Untitled Post
 
 
         document.getElementById("postTitle").innerText = post.title;
-        document.getElementById("postContent").innerText = post.content;
+        document.getElementById("postContent").innerHTML = marked.parse(post.content);
 
         document.getElementById("postBoard").innerText = post.board;
         document.getElementById("postBoard").href = "board?board=" + post.board;

@@ -7,6 +7,7 @@ permalink: /changelog
 # v0.4.1b
 *03/04/2022*
 - Fix board indicator on posts not on user (TheGooseLord straight up disabled them for some reason)
+- Fix back button
 
 # v0.4b
 *03/04/2022*

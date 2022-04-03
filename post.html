@@ -4,7 +4,7 @@ title: Untitled Post
 ---
 
 
-<a id="backLink" class="btn btn-secondary btn-lg active" style="font-size: 0.8rem" role="button">
+<a onclick="history.back()" id="backLink" class="btn btn-secondary btn-lg active" style="font-size: 0.8rem" role="button">
     <i class="bi bi-chevron-left"></i>Back
 </a>
 
@@ -97,12 +97,6 @@ title: Untitled Post
 
         document.getElementById("postAuthor").innerText = post.author;
         document.getElementById("postAuthor").href = "user?board=user&user=" + post.author;
-
-        if (URLParams.get('prev') == "user") {
-            document.getElementById("backLink").href = "profile.html";
-        } else {
-            document.getElementById("backLink").href = "board?board=" + post.board;
-        }
         
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);

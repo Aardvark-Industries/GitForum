@@ -7,6 +7,7 @@ permalink: /changelog
 # v0.5b
 *03/04/2022*
 - Markdown support in posts!
+- Markdown editor
 - New content policy
 
 # v0.4b

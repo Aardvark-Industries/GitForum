@@ -24,7 +24,6 @@ title: New Post
     <p>Please ensure your post is compliant with the <a href="/GitForum/content-policy">content policy</a>. Your post may be removed or edited without warning.</p>
     <div class="mb-3 form-floating">
         <textarea class="form-control" id="postContent" style="min-height: 20rem;"></textarea>
-        <label for="postContent" class="form-label">Type your post</label>
     </div>
 
     <button id="submit-post-button" class="btn btn-primary" type="button">Submit</button>
@@ -33,6 +32,8 @@ title: New Post
 <script type="module">
     import {loadBoards} from '/{{ site.repo }}/modules/load.js';
     import {sendPost} from '/{{ site.repo }}/modules/post.js';
+
+    var simplemde = new SimpleMDE();
 
     (async () => {
         var boards = await loadBoards(window.OCTOKIT);
@@ -50,8 +51,10 @@ title: New Post
     })();
 
     async function submitPost(){
-        await sendPost(window.OCTOKIT, window.OWNER, window.REPO, document.getElementById("postTitle").value, document.getElementById("postContent").value, document.getElementById("boardSelector").value)
+        console.log(simplemde.value());
+        await sendPost(window.OCTOKIT, window.OWNER, window.REPO, document.getElementById("postTitle").value, simplemde.value(), document.getElementById("boardSelector").value)
     }
+    
 
     document.getElementById("submit-post-button").onclick = (() => {submitPost()});
 </script>

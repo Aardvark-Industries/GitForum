@@ -19,7 +19,7 @@ async function sendPost(octokit, owner, repo, title, body, board) {
     }
 
     if(!e){
-        //window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
+        window.location.href = "/GitForum/board?board=" + document.getElementById("boardSelector").value;
     }
 }
 

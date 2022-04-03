@@ -50,7 +50,14 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
     
     var postContent = document.createElement("p");
     postContent.className = "card-text";
-    postContent.innerText = post.content;
+
+    if (post.content.length > 256){
+        postContent.innerText = post.content.slice(0, 255) + "...";
+    } else {
+        postContent.innerText = post.content;
+    }
+
+    
 
     var postContentContainer = document.createElement("div");
     postContentContainer.className = "col";

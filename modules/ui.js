@@ -41,12 +41,10 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
     var postInfoTime = document.createElement("span");
     postInfoTime.innerText = " " + DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
 
-    if (board == "user") {
-        var postInfoBoard = document.createElement("span");
-        postInfoBoard.className = "badge bg-primary";
-        postInfoBoard.innerHTML = "<a class='text-light text-decoration-none' id='postBoard' href='board?board=" + post.board + "'>" + post.board + "</a>";
-        postInfo.appendChild(postInfoBoard);
-    }
+    var postInfoBoard = document.createElement("span");
+    postInfoBoard.className = "badge bg-primary";
+    postInfoBoard.innerHTML = "<a class='text-light text-decoration-none' id='postBoard' href='board?board=" + post.board + "'>" + post.board + "</a>";
+    postInfo.appendChild(postInfoBoard);
     
     postInfo.appendChild(postInfoTime);
     

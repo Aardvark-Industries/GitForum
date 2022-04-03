@@ -15,6 +15,4 @@ GitForum is written *entirely* client-side (with one exception), so no data is s
 
 So what's the exception? Well, we ran into an issue where whilst users could create posts, they couldn't add them to specific boards because only people with write access to the repo can assign issue labels. Our solution was to write a bot that would detect new issues and automatically assign the label based on some metadata in the issue title. This bot *never directly interacts with the site*, but if you want to check out the code yourself to make sure we aren't up to no good, you can see the [code for the site](https://github.com/Aardvark-Industries/GitForum) and the [bot](https://github.com/Aardvark-Industries/GitForum-bot) on GitHub.
 
-*You're welcome.*
-
-\- Pr0x1mas
+\- jbritain

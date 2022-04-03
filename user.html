@@ -25,19 +25,22 @@ layout: default
 
 <script type="module">
     import {URLParams, getBoard, getUser} from '/{{ site.repo }}/modules/load.js';
-    import {displayUserPostPreviews} from '/{{ site.repo }}/modules/ui.js';
+    import {displayUserPostPreviews, errorMessage} from '/{{ site.repo }}/modules/ui.js';
 
     (async () => {
-        // var user = await getUser(window.OCTOKIT, URLParams.get('user'));
-        var user = URLParams.get('user');
+        try {
+            var user = await getUser(window.OCTOKIT, URLParams.get('user'));
+        } catch(e) {
+            errorMessage("User not found")
+        }
 
-        document.getElementById("pageTitle").innerText = user; // set title
-        document.getElementById("pageDescription").innerText = "Here you can view all the posts made by " + user + "."; // set description
-        document.getElementById("profilePic").src = "https://github.com/" + user + ".png";
+        document.getElementById("pageTitle").innerText = user.login; // set title
+        document.getElementById("pageDescription").innerText = user.bio; // set description
+        document.getElementById("profilePic").src = user.avatar_url;
 
         document.title = "GitForum - " + user;
         
-        await displayUserPostPreviews(window.OCTOKIT, user);
+        await displayUserPostPreviews(window.OCTOKIT, user.login);
 
         document.getElementById("postsLoading").style.display = "none";
     })();

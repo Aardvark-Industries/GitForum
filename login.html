@@ -7,10 +7,6 @@ title: Login
     <img class="mx-auto" height="57" src="assets/branding/logo.png">
 
     <form class="mt-4 text-left">
-        <div class="mb-3">
-            <input id="username-input" type="text" class="form-control" placeholder="Username">
-        </div>
-
         <div class="input-group mb-3">
             <input id="token-input" type="password" class="form-control" placeholder="Token">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i onclick="toggleTokenVisible()" id="toggleTokenVisible" class="bi bi-eye-slash-fill"></i></button>
@@ -46,8 +42,16 @@ title: Login
 
 <script type="module">
     import {setTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
+    import {getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
 
     // document.getElementById("login-button").onclick = 'setTokenCookie(document.getElementById("token-input"))';
-    document.getElementById("login-button").onclick = (() => {setTokenCookie(document.getElementById("token-input").value, document.getElementById("username-input").value); location.href="{{ site.baseurl }}/"});
+    document.getElementById("login-button").onclick = (() => {
+        (async () => {
+                var user = await getAuthenticatedUser(window.OCTOKIT);
+                console.log(user);
+                setTokenCookie(document.getElementById("token-input").value, user.login); 
+                location.href="{{ site.baseurl }}/"
+        })();
+    });
     // console.log(document.getElementById("login-button"));
 </script>

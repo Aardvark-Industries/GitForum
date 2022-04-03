@@ -76,13 +76,18 @@ title: Untitled Post
 
 <script type="module">
     import {getPostFromURL} from '/{{ site.repo }}/modules/classes.js';
-    import {displayComment} from '/{{ site.repo }}/modules/ui.js';
+    import {displayComment, errorMessage} from '/{{ site.repo }}/modules/ui.js';
     import {URLParams, getPost, getComments, getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
     import {sendComment} from '/{{ site.repo }}/modules/post.js';
     import {upvotePost, downvotePost, getUserVoteState, displayVotes} from '/{{ site.repo }}/modules/vote.js'
 
     (async () => {
-        var post = await getPost(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('post'));
+        try {
+            var post = await getPost(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('post'));
+        } catch(e) {
+            errorMessage("Post not found")
+        }
+
 
         document.getElementById("postTitle").innerText = post.title;
         document.getElementById("postContent").innerText = post.content;

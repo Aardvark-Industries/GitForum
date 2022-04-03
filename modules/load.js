@@ -74,11 +74,11 @@ async function getComments(octokit, owner, repo, issue_number) {
 }
 
 async function getAuthenticatedUser(octokit) {
-    return await (await octokit.rest.users.getAuthenticated()).data.login;
+    return await (await octokit.rest.users.getAuthenticated()).data;
 }
 
 async function getUser(octokit, username) {
-    return await (await octokit.rest.users.getByUsername(username)).data.login;
+    return await (await octokit.rest.users.getByUsername({username})).data;
 }
 
 async function loadPosts(octokit, board) {

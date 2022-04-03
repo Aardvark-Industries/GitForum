@@ -24,11 +24,14 @@ layout: default
 
 <script type="module">
     import {URLParams, getBoard} from '/{{ site.repo }}/modules/load.js';
-    import {displayPostPreviews} from '/{{ site.repo }}/modules/ui.js';
+    import {displayPostPreviews, errorMessage} from '/{{ site.repo }}/modules/ui.js';
 
     (async () => {
-        var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('board'));
-
+        try {
+            var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('board'));
+        } catch (e) {
+            errorMessage("Board not found");
+        }
         document.getElementById("boardTitle").innerText = board.name; // set title
         document.getElementById("boardDescription").innerText = board.description; // set description
 

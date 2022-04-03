@@ -256,6 +256,10 @@ function errorMessage(error, icon){
     errorElem.className = "alert alert-danger alert-dismissible fade show shadow";
     errorElem.role="alert";
 
+    if(icon == undefined){
+        icon = "exclamation-triangle-fill"; 
+    }
+
     var iconElem = document.createElement("i");
     iconElem.className = "bi bi-" + icon;
     iconElem.innerText = " ";

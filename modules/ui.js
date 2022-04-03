@@ -131,29 +131,45 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
 async function displayPostPreviews(octokit, board) {
     var posts = await loadPosts(octokit, board);
     
-    posts.forEach(async post => {
-        if (await checkAuth()) {
-            var authenticatedUser = await getAuthenticatedUser(octokit);
-            var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
-            displayPostPreview(post, "", userVoteState);
-        } else {
-            displayPostPreview(post, "" , 0);
-        }
-    });
+    if(posts.length < 1) {
+        var emptyMessage = document.createElement("h5");
+        emptyMessage.className = "text-muted";
+        emptyMessage.innerText = "There's nothing here."
+
+        postContainer.appendChild(emptyMessage);
+    } else {
+        posts.forEach(async post => {
+            if (await checkAuth()) {
+                var authenticatedUser = await getAuthenticatedUser(octokit);
+                var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
+                displayPostPreview(post, "", userVoteState);
+            } else {
+                displayPostPreview(post, "" , 0);
+            }
+        });
+    }
 }
 
 async function displayUserPostPreviews(octokit, user) {
     var posts = await loadUserPosts(octokit, user);
 
-    posts.forEach(async post => {
-        if (await checkAuth()) {
-            var authenticatedUser = await getAuthenticatedUser(octokit);
-            var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
-            displayPostPreview(post, "user", userVoteState);
-        } else {
-            displayPostPreview(post, "user", 0);
-        }
-    });
+    if(posts.length < 1) {
+        var emptyMessage = document.createElement("h5");
+        emptyMessage.className = "text-muted";
+        emptyMessage.innerText = "There's nothing here."
+
+        postContainer.appendChild(emptyMessage);
+    } else {
+        posts.forEach(async post => {
+            if (await checkAuth()) {
+                var authenticatedUser = await getAuthenticatedUser(octokit);
+                var userVoteState = await getUserVoteState(octokit, window.OWNER, window.REPO, post.id, authenticatedUser);
+                displayPostPreview(post, "user", userVoteState);
+            } else {
+                displayPostPreview(post, "user", 0);
+            }
+        });
+    }
 }
 
 async function displayNavLinks(octokit){ // show links to each board in navbar

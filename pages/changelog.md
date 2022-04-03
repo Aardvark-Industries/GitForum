@@ -4,16 +4,15 @@ layout: page
 permalink: /changelog
 ---
 
-# v0.4.1b
-*03/04/2022*
-- Fix board indicator on posts not on user (TheGooseLord straight up disabled them for some reason)
-- Fix back button
-
 # v0.4b
 *03/04/2022*
 - Replace useless text with user bio on profile page
 - Error messages now display if user, post, or board cannot load
 - Username is no longer required to login
+- Fix board indicator on posts not on user (TheGooseLord straight up disabled them for some reason)
+- Fix back button
+- Change loading message
+- Add message for empty boards/users with no posts
 
 ## v0.3.3b
 *21/12/2021*

@@ -3,6 +3,15 @@ title: changelog
 layout: page
 permalink: /changelog
 ---
+
+# v0.6.1a
+*04/04/2022*
+#### New Features
+- Warning if JS is not supported
+
+#### Bugfixes
+- Logging in with a bad token now shows an error and does not render the site unusable
+
 # v0.6a
 *04/04/2022*
 #### New Features

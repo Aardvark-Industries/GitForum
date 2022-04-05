@@ -41,21 +41,36 @@ title: Login
 </script>
 
 <script type="module">
-    import {setTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
+    import {errorMessage} from '/{{ site.repo }}/modules/ui.js';
+    import {setTokenCookie, removeTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
     import {URLParams, getAuthenticatedUser, instantiateAPI} from '/{{ site.repo }}/modules/load.js';
 
     // document.getElementById("login-button").onclick = 'setTokenCookie(document.getElementById("token-input"))';
     document.getElementById("login-button").onclick = (() => { 
         (async () => {
+                var error;
                 setTokenCookie(document.getElementById("token-input").value, undefined); // set token so API can authenticate in order to load username
                 window.OCTOKIT = await instantiateAPI();
-                var user = await getAuthenticatedUser(window.OCTOKIT);
-                setTokenCookie(document.getElementById("token-input").value, user.login); 
-                if(URLParams.get("ref")){
-                    window.location.href = URLParams.get("ref")
-                } else {
-                    window.location.href="{{ site.baseurl }}/"
+                try {
+                    var user = await getAuthenticatedUser(window.OCTOKIT);
+                } catch(e){
+                    error = e.toString().split(": ")[1];
                 }
+                console.log(user)
+
+                if(user == undefined){
+                    errorMessage("Error logging in: " + error);
+                    removeTokenCookie();
+                } else {
+                    setTokenCookie(document.getElementById("token-input").value, user.login); 
+                    if(URLParams.get("ref")){
+                        window.location.href = URLParams.get("ref")
+                    } else {
+                        window.location.href="{{ site.baseurl }}/"
+                    }
+                }
+                
+                    
                 
         })();
     });

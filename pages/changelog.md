@@ -9,6 +9,9 @@ permalink: /changelog
 #### New Features
 - Warning if JS is not supported
 
+#### Changes
+- "Show token" button is now easier to click
+
 #### Bugfixes
 - Logging in with a bad token now shows an error and does not render the site unusable
 

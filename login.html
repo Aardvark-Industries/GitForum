@@ -56,7 +56,6 @@ title: Login
                 } catch(e){
                     error = e.toString().split(": ")[1];
                 }
-                console.log(user)
 
                 if(user == undefined){
                     errorMessage("Error logging in: " + error);

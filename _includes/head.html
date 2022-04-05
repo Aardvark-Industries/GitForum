@@ -35,6 +35,12 @@
 
     <script type="module">
         import {instantiateAPI, loadBoards} from '/{{ site.repo }}/modules/load.js';
+        import {errorMessage} from '/{{ site.repo }}/modules/ui.js';
+        
+        window.onerror = function(msg, url, linenumber) {
+            errorMessage(msg + "\n On line " + linenumber);
+            return true;
+        };
 
         // Constants
 
@@ -47,7 +53,5 @@
 
             window.STATUS = true;
         })();
-
-
     </script>
 </head>

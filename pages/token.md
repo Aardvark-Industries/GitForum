@@ -42,7 +42,7 @@ Simply put, a PAT is a code that we attach to the post when we send it to GitHub
 <small>Do not attempt to use this token. I generated it for this example but it has since been deleted.</small>
 
 ## How do I use it?
-Now, when you're logging in, just type your GitHub username and the provided token, and log in!
+Now, when you're logging in, just type your token, and log in!
 
 ![screenshot](assets/tokenSetup/4.png)
 

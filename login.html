@@ -42,7 +42,7 @@ title: Login
 
 <script type="module">
     import {setTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
-    import {getAuthenticatedUser, instantiateAPI} from '/{{ site.repo }}/modules/load.js';
+    import {URLParams, getAuthenticatedUser, instantiateAPI} from '/{{ site.repo }}/modules/load.js';
 
     // document.getElementById("login-button").onclick = 'setTokenCookie(document.getElementById("token-input"))';
     document.getElementById("login-button").onclick = (() => { 
@@ -51,7 +51,12 @@ title: Login
                 window.OCTOKIT = await instantiateAPI();
                 var user = await getAuthenticatedUser(window.OCTOKIT);
                 setTokenCookie(document.getElementById("token-input").value, user.login); 
-                location.href="{{ site.baseurl }}/"
+                if(URLParams.get("ref")){
+                    window.location.href = URLParams.get("ref")
+                } else {
+                    window.location.href="{{ site.baseurl }}/"
+                }
+                
         })();
     });
 </script>

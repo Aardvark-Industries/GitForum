@@ -3,84 +3,125 @@ title: changelog
 layout: page
 permalink: /changelog
 ---
+# v0.6a
+*04/04/2022*
+#### New Features
+- Some more error messages
+- Post locking support
 
-# v0.5b
+#### Changes
+- Improve some redirect links
+- The option to comment is no longer available if you are not logged in
+
+#### Bugfixes
+- Posts you have voted on now correctly display this
+- Boards can no longer be created by modifying the HTML to use a board value that does not exist [BOT]
+
+
+# v0.5a
+#### New Features
 *03/04/2022*
 - Markdown support in posts!
 - Markdown editor
 - New content policy
 
-# v0.4b
+
+# v0.4a
 *03/04/2022*
+#### Changes
 - Replace useless text with user bio on profile page
-- Error messages now display if user, post, or board cannot load
 - Username is no longer required to login
-- Fix board indicator on posts not on user (TheGooseLord straight up disabled them for some reason)
-- Fix back button
 - Change loading message
+
+#### New features
 - Add message for empty boards/users with no posts
+- Error messages now display if user, post, or board cannot load
 
-## v0.3.3b
+#### Bugfixes
+- Fix board indicator not displaying on posts viewed on a board
+
+# v0.3.3a
 *21/12/2021*
-- Remove redundant profile page (just use user page)
+#### New Features
 - Add profile pic to user page
-- Set SameSite attribute on cookies to hopefully stop them expiring
 
-## v0.3.2b
+#### Changes
+- Set SameSite attribute on cookies to hopefully stop them expiring
+- Remove redundant profile page (just use user page)
+
+# v0.3.2a
 *21/12/2021*
+#### Changes
 - Temporary login fix
 
-## v0.3.1b
+# v0.3.1a
 *21/12/2021*
+#### New Features
 - Voting support! (Posts only, comments soon)
 
-## v0.3b
+# v0.3a
 *20/12/2021*
-- Bot support to fix labelling issue
+#### New Features
 - Add user pages
 - Add profile picture to profile page
 
-## v0.2.5b
+#### Bugfixes
+- Labels are now assigned to issues by a bot as posts by users who are not administrators on the repo could not do this, and their posts would remain unlabelled.
+
+# v0.2.5a
 *20/12/2021*
+#### New Features
 - Add board link to profile post previews
 
-## v0.2.4b
+# v0.2.4a
 *20/12/2021*
+#### Bugfixes
 - Fix back button on posts opened from profile page
 
-## v0.2.3b
+# v0.2.3a
 *20/12/2021*
+#### New Features
 - Add current user profile page
 
-## v0.2.2b
+# v0.2.2a
 *20/12/2021*
+#### Changes
 - Put back link inside button
 
-## v0.2.1b
+# v0.2.1a
 *19/12/2021*
+#### New Features
 - Info on setting up token
 - 'show token' button on login page
 
-# v0.2b
+# v0.2a
 *19/12/2021*
+#### New Features
 - Comment support!
 
-## v0.1.3b
+# v0.1.3a
 *19/12/2021*
-- Fix board badge on post
+#### Changes
 - Back button on post
 
-## v0.1.2b
+#### Bugfixes
+- Fix board badge on post
+
+# v0.1.2a
 *19/12/2021*
+#### Changes
 - Consistency between loading one post and multiple
+
+#### New Features
 - Show author and date on post preview
 
-## v0.1.1b
+# v0.1.1a
 *19/12/2021*
+#### New Features
 - Redirect to board after posting
 - Show user profile picture on user icon
 - Sticky navbar
 
-# v0.1b
+# v0.1a
 *18/12/2021*
 - Initial release

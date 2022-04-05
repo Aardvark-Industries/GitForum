@@ -24,7 +24,7 @@ var consoleFlash =             `
             `
 
 class Post {
-    constructor(id, title, content, board, author, date, comments, upvotes, downvotes){
+    constructor(id, title, content, board, author, date, comments, upvotes, downvotes, locked){
         this.id = id;
         this.title = title;
         this.content = content;
@@ -34,6 +34,7 @@ class Post {
         this.comments = comments;
         this.upvotes = upvotes;
         this.downvotes = downvotes;
+        this.locked = locked;
     }
 }
 

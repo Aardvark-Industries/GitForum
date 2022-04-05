@@ -50,7 +50,8 @@ async function getPost(octokit, owner, repo, issue_number) {
 
     var votes = await getPostVotes(octokit, owner, repo, issue_number);
 
-    return new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0].name, issue.data.user.login, issue.data.created_at, issue.data.comments, votes[0], votes[1]);
+    var post = new Post(issue.data.number, issue.data.title, issue.data.body, issue.data.labels[0].name, issue.data.user.login, issue.data.created_at, issue.data.comments, votes[0], votes[1], issue.data.locked);
+    return post;
 }
 
 async function getBoard(octokit, owner, repo, name) {

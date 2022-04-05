@@ -15,7 +15,7 @@
 
         <form id="navbarButtonForm" class="d-flex ms-auto">
             <div id="user-dropdown" style="height: 38px; display: none;" class="dropdown me-2">
-                <input alt=" " class="rounded" id="userButton" role="button" data-bs-toggle="dropdown" style="height: 100%;" aria-expanded="false" type="image">
+                <input alt=" " onerror="this.src='assets/placeHolderAvatar.png'" class="rounded" id="userButton" role="button" data-bs-toggle="dropdown" style="height: 100%;" aria-expanded="false" type="image">
 
                 <ul class="dropdown-menu" aria-labelledby="userBurron">
                     <li>
@@ -51,6 +51,8 @@
 
 <script type="module">
     import {removeTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
+
+    document.getElementById("loginButton").href = "/{{ site.repo }}/login?ref=" + window.location.href;
 
     document.getElementById("logout-button").onclick = (() => {removeTokenCookie()});
 </script>

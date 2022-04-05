@@ -272,14 +272,18 @@ function displayComment(comment, post){
     commentsContainer.appendChild(commentContainer);
 }
 
-function errorMessage(error, icon){
-    var errorElem = document.createElement("div");
-    errorElem.className = "alert alert-danger alert-dismissible fade show shadow";
-    errorElem.role="alert";
-
+function errorMessage(error, icon, colour){
     if(icon == undefined){
         icon = "exclamation-triangle-fill"; 
     }
+
+    if(colour == undefined){
+        colour = "danger"
+    }
+
+    var errorElem = document.createElement("div");
+    errorElem.className = "alert alert-" + colour + " alert-dismissible fade show shadow";
+    errorElem.role="alert";
 
     var iconElem = document.createElement("i");
     iconElem.className = "bi bi-" + icon;

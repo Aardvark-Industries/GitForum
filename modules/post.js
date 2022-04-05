@@ -14,7 +14,7 @@ async function sendPost(octokit, owner, repo, title, body, board) {
         });
 
     } catch (error) {
-        errorMessage("error Posting");
+        errorMessage("Error posting: " + e);
         e = true;
     }
 

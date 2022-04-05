@@ -76,6 +76,7 @@ title: Untitled Post
 </div>
 
 <script type="module">
+    import {checkAuth} from '/{{ site.repo }}/modules/cookies.js'
     import {getPostFromURL} from '/{{ site.repo }}/modules/classes.js';
     import {displayComment, errorMessage} from '/{{ site.repo }}/modules/ui.js';
     import {URLParams, getPost, getComments, getAuthenticatedUser} from '/{{ site.repo }}/modules/load.js';
@@ -87,6 +88,15 @@ title: Untitled Post
             var post = await getPost(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('post'));
         } catch(e) {
             errorMessage("Post not found")
+        }
+
+        if(!(await checkAuth()) || post.locked){
+            document.getElementById("submitCommentButton").disabled = "true";
+            document.getElementById("commentContent").disabled = "true";
+        }
+
+        if(post.locked){
+            errorMessage("This post is locked. You cannot interact with it.", "lock-fill", "warning")
         }
 
 

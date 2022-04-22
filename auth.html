@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<script>
+    function post (url, data) {
+            return fetch(url, {method: "POST", headers: data});
+    }
+
+    var clientID = "0b317c3bb1c1ec8b9230"; // I think it's ok to make this public??
+    var clientSecret = "b5bfbb27cf106f686a4536b2104d6f52387081ef" // if this is still here when I commit then I will commit several war crimes in Scunthorpe
+
+    // https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
+
+    currentParams = new URLSearchParams(window.location.search); // the existing http parameters
+    newParams = new URLSearchParams(); // the new parameters when redirected
+
+    if(currentParams.get("code")){ // part 2 - get token
+        var code = currentParams.get("code");
+
+        newParams.append("client_id", clientID);
+        newParams.append("client_secret", clientSecret);
+        newParams.append("code", code);
+        newParams.append("redirect_uri", "http://127.0.0.1:4000/GitForum/auth");
+
+        //window.location.href = "https://github.com/login/oauth/access_token?" + newParams;
+
+        console.log(fetch("https://pr0xymas.herokuapp.com/", {
+            "method": "POST", 
+            "headers": {
+                "Content-Type": "application/json",
+                "target-url": "https://github.com/login/oauth/authorize",
+                "client_secret": clientSecret,
+                "client_id": "clientID",
+                "code": code,
+                "redirect_uri": "http://127.0.0.1:4000/GitForum/auth",
+            }
+    }));
+
+    } else { // part 1 - request identity
+        newParams.append("client_id", clientID);
+        newParams.append("redirect_uri", "http://127.0.0.1:4000/GitForum/auth");
+        newParams.append("scope", "public_repo");
+
+        window.location.href = "https://github.com/login/oauth/authorize?" + newParams;
+        
+    }
+</script>

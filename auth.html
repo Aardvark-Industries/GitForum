@@ -24,18 +24,15 @@ layout: default
         newParams.append("redirect_uri", "http://127.0.0.1:4000/GitForum/auth");
 
         //window.location.href = "https://github.com/login/oauth/access_token?" + newParams;
-
-        console.log(fetch("https://pr0xymas.herokuapp.com/", {
-            "method": "POST", 
-            "headers": {
-                "Content-Type": "application/json",
-                "target-url": "https://github.com/login/oauth/authorize",
-                "client_secret": clientSecret,
-                "client_id": "clientID",
-                "code": code,
-                "redirect_uri": "http://127.0.0.1:4000/GitForum/auth",
-            }
-    }));
+        /*(async () => {
+            console.log(await fetch("https://gitforum-bot.herokuapp.com/auth", {
+                "method": "POST", 
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({code: code})
+            }));
+        })();*/
 
     } else { // part 1 - request identity
         newParams.append("client_id", clientID);

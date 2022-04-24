@@ -52,7 +52,7 @@
 <script type="module">
     import {removeTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
 
-    document.getElementById("loginButton").href = "/{{ site.repo }}/login?ref=" + window.location.href;
+    document.getElementById("loginButton").href = "/{{ site.repo }}/loginv2?ref=" + window.location.href;
 
     document.getElementById("logout-button").onclick = (() => {removeTokenCookie()});
 </script>

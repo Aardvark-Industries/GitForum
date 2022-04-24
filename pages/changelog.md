@@ -3,6 +3,10 @@ title: Changelog
 layout: page
 permalink: /changelog
 ---
+# v0.7a
+*24/04/2022*
+### New Features
+- Oauth!
 
 # v0.6.1a
 *04/04/2022*

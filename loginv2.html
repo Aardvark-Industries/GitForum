@@ -1,0 +1,82 @@
+---
+layout: default
+title: Logging in...
+---
+
+<div style="text-align: center;" class="position-absolute top-50 start-50 translate-middle">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <p>You are being logged in...</p>
+    <small>Not working? Try <a href="/{{ site.repo }}/login">using a token</a>.</small>
+</div>
+
+<script type="module">
+    import {errorMessage} from '/{{ site.repo }}/modules/ui.js';
+    import {setTokenCookie, removeTokenCookie} from '/{{ site.repo }}/modules/cookies.js';
+    import {URLParams, getAuthenticatedUser, instantiateAPI} from '/{{ site.repo }}/modules/load.js';
+
+    function post (url, data) {
+            return fetch(url, {method: "POST", headers: data});
+    }
+
+    var clientID = "0b317c3bb1c1ec8b9230"; // I think it's ok to make this public??
+
+    // https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
+
+    var currentParams = new URLSearchParams(window.location.search); // the existing http parameters
+    var newParams = new URLSearchParams(); // the new parameters when redirected
+
+    if(currentParams.get("code")){ // part 2 - get token
+        var code = currentParams.get("code");
+
+        //window.location.href = "https://github.com/login/oauth/access_token?" + newParams;
+        (async () => {
+            var token;
+
+            await fetch("https://gitforum-bot.herokuapp.com/auth", {
+                "method": "POST", 
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({code: code})
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                token = data.token;
+            });
+
+            (async () => {
+                var error;
+                setTokenCookie(token, undefined); // set token so API can authenticate in order to load username
+                window.OCTOKIT = await instantiateAPI();
+                try {
+                    var user = await getAuthenticatedUser(window.OCTOKIT);
+                } catch(e){
+                    error = e.toString().split(": ")[1];
+                }
+
+                if(user == undefined){
+                    errorMessage("Error logging in: " + error);
+                    removeTokenCookie();
+                } else {
+                    setTokenCookie(token, user.login); 
+                    if(URLParams.get("ref")){
+                        window.location.href = URLParams.get("ref")
+                    } else {
+                        window.location.href="{{ site.baseurl }}/"
+                    }
+                }
+            })();
+        })();
+        
+
+    } else { // part 1 - request identity
+        newParams.append("client_id", clientID);
+        newParams.append("redirect_uri", "https://aardvark-industries.github.io/GitForum/loginv2");
+        newParams.append("scope", "public_repo");
+
+        window.location.href = "https://github.com/login/oauth/authorize?" + newParams;
+        
+    }
+</script>

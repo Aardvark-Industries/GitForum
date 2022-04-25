@@ -14,3 +14,5 @@ All of the code in the repo is written by [TheGooseLord](https://github.com/TheG
 - [SimpleMDE](https://simplemde.com/) is a markdown editor that both fits in with Bootstrap very nicely but is also very easy to use and took only a few lines of code to integrate.
 - [GitHub](https://github.com) powers this entire project, both by hosting the site through github pages and through providing an API that allows us to create and fetch issues programmatically.
 - [Heroku](https://www.heroku.com) hosts the bot we currently use to assign labels to issues since this cannot be done client-side by normal users. I do hope to migrate it to the Raspberry Pi that sits under my bed though.
+
+Aardvark Industries, jbritain, TheGooseLord, and GitForum are not affiliated with GitHub in anyway. We do use their servers though.

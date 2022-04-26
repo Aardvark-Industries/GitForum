@@ -3,6 +3,16 @@ title: Changelog
 layout: page
 permalink: /changelog
 ---
+# v0.7.1a
+*26/04/2022*
+### New Features
+- Posts now display a link to the original GitHub issue, allowing the user to edit/delete a post etc until this is implemented natively
+
+### Changes
+- Informative messages on login screen
+- Link to new login system on old login page
+- Upvote and downvote buttons are now actually buttons (why on earth were they spans?), back button is no longer always in active state. This is why TheGooseLord shouldn't do GUI.
+
 # v0.7a
 *24/04/2022*
 ### New Features

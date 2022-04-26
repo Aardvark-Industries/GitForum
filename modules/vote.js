@@ -104,18 +104,18 @@ async function displayVotes(octokit, owner, repo, issue_number) {
         var authenticatedUserVoteState = await getUserVoteState(octokit, owner, repo, issue_number, authenticatedUser);
 
         if (authenticatedUserVoteState == 1) {
-            document.getElementById("post-upvotes").className = "badge bg-primary";
-            document.getElementById("post-downvotes").className = "badge bg-secondary";
+            document.getElementById("post-upvotes").className = "btn btn-primary btn-sm";
+            document.getElementById("post-downvotes").className = "btn btn-secondary btn-sm";
         } else if (authenticatedUserVoteState == -1) {
-            document.getElementById("post-upvotes").className = "badge bg-secondary";
-            document.getElementById("post-downvotes").className = "badge bg-primary";
+            document.getElementById("post-upvotes").className = "btn btn-secondary btn-sm";
+            document.getElementById("post-downvotes").className = "btn btn-primary btn-sm";
         } else {
-            document.getElementById("post-upvotes").className = "badge bg-secondary";
-            document.getElementById("post-downvotes").className = "badge bg-secondary";
+            document.getElementById("post-upvotes").className = "btn btn-secondary btn-sm";
+            document.getElementById("post-downvotes").className = "btn btn-secondary btn-sm";
         }
     } else {
-        document.getElementById("post-upvotes").className = "badge bg-secondary";
-        document.getElementById("post-downvotes").className = "badge bg-secondary";
+        document.getElementById("post-upvotes").className = "btn btn-secondary btn-sm";
+        document.getElementById("post-downvotes").className = "btn btn-secondary btn-sm";
     }
 
     document.getElementById('post-upvotes').innerHTML = post.upvotes + " <i class='bi bi-chevron-up'></i>";

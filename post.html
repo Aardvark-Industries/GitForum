@@ -4,8 +4,8 @@ title: Untitled Post
 ---
 
 
-<a onclick="history.back()" id="backLink" class="btn btn-secondary btn-lg active" style="font-size: 0.8rem" role="button">
-    <i class="bi bi-chevron-left"></i>Back
+<a onclick="history.back()" id="backLink" class="btn btn-secondary" style="font-size: 0.8rem" role="button">
+    <i class="bi bi-chevron-left"></i> Back
 </a>
 
 <br><br>
@@ -36,13 +36,13 @@ title: Untitled Post
             </p>
         </div>
 
-        <div class="col-1 text-end" style="width: 37.6px; box-sizing: content-box;">
-            <span style="cursor: pointer;" id="post-upvotes" class="badge bg-secondary">
-            </span>
-            
-            <span style="cursor: pointer;" id="post-downvotes" class="badge bg-secondary">
+        <div class="col-1 text-end" style="width: 44px; box-sizing: content-box;">
+            <button style="margin-bottom: 8px;" type="button" id="post-upvotes" class="btn btn-secondary btn-sm"></button>
+            <br>
+            <button type="button" id="post-downvotes" class="btn btn-secondary btn-sm"></button>
             </span>
         </div>
+        <p class="text-muted"><a href="" id="issueLink"><i class="bi bi-github"></i> View post on GitHub</a></p>
     </div>
 </div>
 
@@ -123,6 +123,8 @@ title: Untitled Post
         document.getElementById("post-downvotes").onclick = (() => {downvotePost(window.OCTOKIT, window.OWNER, window.REPO, post.id)});
 
         document.title = "GitForum - " + post.title;
+
+        document.getElementById("issueLink").href = "https://github.com/Aardvark-Industries/GitForum-content/issues/" + post.id;
 
         //============================
 

@@ -38,7 +38,7 @@
         import {errorMessage} from '/{{ site.repo }}/modules/ui.js';
         
         window.onerror = function(msg, url, linenumber) {
-            errorMessage(msg + "\n On line " + linenumber);
+            errorMessage("<code>" +msg + "</code> on line " + linenumber);
             return true;
         };
 

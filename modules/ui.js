@@ -290,7 +290,7 @@ function errorMessage(error, icon, colour){
     iconElem.innerText = " ";
 
     var errorText = document.createElement("span");
-    errorText.innerText = error;
+    errorText.innerHTML = error;
 
     var dismissButton = document.createElement("button");
     dismissButton.type="button";

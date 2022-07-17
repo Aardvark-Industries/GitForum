@@ -3,6 +3,14 @@ title: Changelog
 layout: page
 permalink: /changelog
 ---
+# v0.8a
+*17/06/2022*
+### New Features
+- Posts are now loaded in pages of 10, instead of all at once. You can flip to and from pages.
+
+### Changes
+- kid named finger:
+
 # v0.7.2a
 *17/06/2022*
 ### Changes

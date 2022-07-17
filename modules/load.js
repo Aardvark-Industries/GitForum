@@ -82,17 +82,23 @@ async function getUser(octokit, username) {
     return await (await octokit.rest.users.getByUsername({username})).data;
 }
 
-async function loadPosts(octokit, board) {
+async function loadPosts(octokit, board, page) {
     if(board){
         var issues = await octokit.rest.issues.listForRepo({
             owner: window.OWNER,
             repo: window.REPO,
-            labels: [board.name]
+            labels: [board.name],
+            per_page: 10,
+            page: page,
+            sort: "updated"
         });
     } else {
         var issues = await octokit.rest.issues.listForRepo({
             owner: window.OWNER,
             repo: window.REPO,
+            per_page: 10,
+            page: page,
+            sort: "updated"
         });
     }
 

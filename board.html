@@ -11,7 +11,7 @@ layout: default
 </h2>
 <hr class="my-4">
 
-<h2>Latest posts</h2>
+<a id="previousPage" onclick="changePage(-1)" href="#">Previous page</a>
 
 <div class="container-fluid" id="postContainer">
     <div id="postsLoading">
@@ -22,22 +22,55 @@ layout: default
     </div>
 </div>
 
+<a onclick="changePage(1)" href="#">Next page</a>
+
+<script>
+    var URLParams = new URLSearchParams(window.location.search)
+    var page = URLParams.get("page");
+
+    if (page == null){
+        page = 1
+    }
+
+    if (page == 1){
+        document.getElementById("previousPage").style.display = "none";
+    }
+
+    function changePage(amount){
+
+        if (parseInt(page) + amount > 0){
+            var newURL = new URL(window.location.href)
+            newURL.searchParams.set("page", parseInt(page) + amount)
+            window.location.href = newURL
+        }
+    }
+</script>
+
 <script type="module">
     import {URLParams, getBoard} from '/{{ site.repo }}/modules/load.js';
     import {displayPostPreviews, errorMessage} from '/{{ site.repo }}/modules/ui.js';
 
     (async () => {
+        var page = URLParams.get('page')
+        if (page == null){
+            page = 1
+        }
+
         try {
-            var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('board'));
+            var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, URLParams.get('board'), page);
         } catch (e) {
             errorMessage("Board not found");
         }
+
+
+
+
         document.getElementById("boardTitle").innerText = board.name; // set title
         document.getElementById("boardDescription").innerText = board.description; // set description
 
         document.title = "GitForum - " + board.name;
         
-        await displayPostPreviews(window.OCTOKIT, board);
+        await displayPostPreviews(window.OCTOKIT, board, page);
 
         document.getElementById("postsLoading").style.display = "none";
     })();

@@ -135,8 +135,8 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
     postContainer.appendChild(postObject);
 }
 
-async function displayPostPreviews(octokit, board) {
-    var posts = await loadPosts(octokit, board);
+async function displayPostPreviews(octokit, board, page) {
+    var posts = await loadPosts(octokit, board, page);
     
     if(posts.length < 1) {
         var emptyMessage = document.createElement("h5");

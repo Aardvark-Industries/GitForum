@@ -3,6 +3,11 @@ title: Changelog
 layout: page
 permalink: /changelog
 ---
+# v0.7.2a
+*17/06/2022*
+### Changes
+- The homepage now shows all posts from different boards, and links to a new about page
+
 # v0.7.1a
 *26/04/2022*
 ### New Features

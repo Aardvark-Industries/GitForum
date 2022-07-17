@@ -83,11 +83,19 @@ async function getUser(octokit, username) {
 }
 
 async function loadPosts(octokit, board) {
-    var issues = await octokit.rest.issues.listForRepo({
-        owner: window.OWNER,
-        repo: window.REPO,
-        labels: [board.name]
-    });
+    if(board){
+        var issues = await octokit.rest.issues.listForRepo({
+            owner: window.OWNER,
+            repo: window.REPO,
+            labels: [board.name]
+        });
+    } else {
+        var issues = await octokit.rest.issues.listForRepo({
+            owner: window.OWNER,
+            repo: window.REPO,
+        });
+    }
+
 
     return await Promise.all(issues.data.map(issue => getPost(octokit, window.OWNER, window.REPO, issue.number)));
 }

@@ -3,6 +3,12 @@ title: Changelog
 layout: page
 permalink: /changelog
 ---
+
+# v0.7.2a
+*26/05/2022*
+### Changes
+- Update to Bootstrap 5.2 and icons 1.8
+
 # v0.7.1a
 *26/04/2022*
 ### New Features

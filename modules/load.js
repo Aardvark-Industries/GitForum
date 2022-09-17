@@ -124,7 +124,10 @@ async function loadBoards(octokit) {
         repo: window.REPO
     });
 
-    return labels.data.map(label => new Board(label.name, label.description));
+    var boards = labels.data.map(label => new Board(label.name, label.description));
+    boards = boards.filter(i => i["name"] !== "news"); // remove news board from list as this cannot be added to by users and serves as the homepage
+
+    return boards;
 }
 
 export {URLParams, instantiateAPI, getPost, getComments, getAuthenticatedUser, getUser, getBoard, loadPosts, loadUserPosts, loadBoards};

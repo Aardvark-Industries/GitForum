@@ -11,7 +11,7 @@ title: Home
 
 <hr class="my-4">
 
-<h2>Posts</h2>
+<h2>News</h2>
 
 <div class="container-fluid" id="postContainer">
     <div id="postsLoading">
@@ -24,14 +24,23 @@ title: Home
 
 </div>
 
-<p>To view more posts, select a board from the navigation bar.</p>
-
 <script type="module">
     import {URLParams, getBoard} from '/{{ site.repo }}/modules/load.js';
     import {displayPostPreviews, errorMessage} from '/{{ site.repo }}/modules/ui.js';
 
-    (async () => {       
-        await displayPostPreviews(window.OCTOKIT, null, 1);
+    (async () => {
+        var page = URLParams.get('page')
+        if (page == null){
+            page = 1
+        }
+
+        try {
+            var board = await getBoard(window.OCTOKIT, window.OWNER, window.REPO, "news", page);
+        } catch (e) {
+            errorMessage("Board not found");
+        }
+        
+        await displayPostPreviews(window.OCTOKIT, board, page);
 
         document.getElementById("postsLoading").style.display = "none";
     })();

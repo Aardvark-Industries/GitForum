@@ -75,11 +75,27 @@ async function getComments(octokit, owner, repo, issue_number) {
 }
 
 async function getAuthenticatedUser(octokit) {
-    return await (await octokit.rest.users.getAuthenticated()).data;
+    var data = await (await octokit.rest.users.getAuthenticated()).data;
+    var permissions = await octokit.rest.repos.getCollaboratorPermissionLevel({
+        owner: "Aardvark-Industries",
+        repo: "GitForum-content",
+        username: data.login
+    });
+
+    data["permissions"] = permissions.data.permission;
+    return data
 }
 
 async function getUser(octokit, username) {
-    return await (await octokit.rest.users.getByUsername({username})).data;
+    var data = await (await octokit.rest.users.getByUsername({username})).data;
+    var permissions = await octokit.rest.repos.getCollaboratorPermissionLevel({
+        owner: "Aardvark-Industries",
+        repo: "GitForum-content",
+        username: username
+    });
+
+    data["permissions"] = permissions.data.permission;
+    return data
 }
 
 async function loadPosts(octokit, board, page) {

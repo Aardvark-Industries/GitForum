@@ -3,7 +3,10 @@ layout: default
 ---
 
 <img style="max-width: 100%;" class="rounded" id="profilePic">
+
 <h1 class="display-4 placeholder-glow" id="pageTitle"><span class="placeholder col-7"></span></h1>
+<span id="userBadge" style="display: none; background-color: var(--bs-purple);" class="badge rounded-pill">Developer</span>
+
 <h2 class="lead" id="pageDescription">
     <span class="placeholder col-4"></span> <!-- fancy glowing placeholders -->
     <span class="placeholder col-4"></span>
@@ -30,6 +33,7 @@ layout: default
     (async () => {
         try {
             var user = await getUser(window.OCTOKIT, URLParams.get('user'));
+            console.log(user)
         } catch(e) {
             errorMessage("User not found")
         }
@@ -37,6 +41,17 @@ layout: default
         document.getElementById("pageTitle").innerText = user.login; // set title
         document.getElementById("pageDescription").innerText = user.bio; // set description
         document.getElementById("profilePic").src = user.avatar_url;
+
+        switch (user.permissions) {
+            case "admin": // user is a developer
+                document.getElementById("userBadge").style.display = null
+                break
+            case "write": // user is a moderator
+                document.getElementById("userBadge").innerText = "Moderator"
+                document.getElementById("userBadge").style.backgroundColor = "var(--bs-yellow)"
+                document.getElementById("userBadge").style.display = null
+                break
+        }
 
         document.title = "GitForum - " + user.login;
         

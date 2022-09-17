@@ -4,9 +4,18 @@ layout: page
 permalink: /changelog
 ---
 
-# v0.7.2a
-*26/05/2022*
+# v0.8a
+*17/06/2022*
+### New Features
+- Posts are now loaded in pages of 10, instead of all at once. You can flip to and from pages.
+
 ### Changes
+- kid named finger:
+
+# v0.7.2a
+*17/06/2022*
+### Changes
+- The homepage now shows all posts from different boards, and links to a new about page
 - Update to Bootstrap 5.2 and icons 1.8
 
 # v0.7.1a

@@ -1,10 +1,10 @@
 <footer class="footer mt-auto py-3 bg-light text-muted">
     <div class="container">
         <p>
-            <img style="filter: grayscale(100%) opacity(50%);" class="d-inline-block" height="24" src="assets/branding/logo.png"> v{{ site.version }}
+            <img style="filter: grayscale(100%) opacity(50%);" class="d-inline-block" height="24" src="{{ 'assets/branding/logo.png' | relative_url }}"> v{{ site.version }}
         </p>
 
-        <p><a href="cookies">Cookie Policy</a> • <a href="changelog">Changelog</a> • <a href="content-policy">Content Policy</a> • <a href="credits">Credits</a></p>
+        <p><a href="{{ 'cookies' | relative_url }}">Cookie Policy</a> • <a href="{{ 'changelog' | relative_url }}">Changelog</a> • <a href="{{ 'content-policy' | relative_url }}">Content Policy</a> • <a href="{{ 'credits' | relative_url }}">Credits</a></p>
 
         <p>
             Copyright {{ 'now' | date: "%Y" }} Aardvark Industries (<a href="https://github.com/jbritain">jbritain</a>/<a href="https://github.com/TheGooseLord">TheGooseLord</a>). All rights reserved.

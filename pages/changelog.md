@@ -4,7 +4,16 @@ layout: page
 permalink: /changelog
 ---
 
-# v0.8a
+# v0.8.1b
+*17/09/2022*
+### New Features
+- User badges
+- About page
+
+### Changes
+- Homepage now displays latest GitForum news
+
+# v0.8b
 *17/06/2022*
 ### New Features
 - Posts are now loaded in pages of 10, instead of all at once. You can flip to and from pages.
@@ -12,7 +21,7 @@ permalink: /changelog
 ### Changes
 - kid named finger:
 
-# v0.7.2a
+# v0.7.2b
 *17/06/2022*
 ### Changes
 - The homepage now shows all posts from different boards, and links to a new about page

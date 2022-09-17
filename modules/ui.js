@@ -36,7 +36,7 @@ function displayPostPreview(post, board, vote_state){ // display post preview on
     var DateTime = luxon.DateTime;
 
     var postInfo = document.createElement("p");
-    postInfo.innerHTML = "posted by <a href='user?board=user&user=" + post.author + "'>" + post.author + "</a> in ";
+    postInfo.innerHTML = "posted by <a href='user?user=" + post.author.login + "'>" + post.author.login + "</a> in ";
 
     var postInfoTime = document.createElement("span");
     postInfoTime.innerText = " " + DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);
@@ -229,7 +229,7 @@ function displayComment(comment, post){
                 commentIcon.src = comment.user.avatar_url;
                 commentIcon.className = "me-2 rounded";
 
-                if(post.author == comment.user.login){
+                if(post.author.login == comment.user.login){
                     var commentBadge = document.createElement("span");
                     commentBadge.innerText = "OP";
                     commentBadge.className = "badge bg-primary ms-1";
@@ -251,7 +251,7 @@ function displayComment(comment, post){
             commentHeader.appendChild(commentIcon);
             commentHeader.appendChild(commentAuthor);
 
-            if(post.author == comment.user.login){
+            if(post.author.login == comment.user.login){
                 commentHeader.appendChild(commentBadge);
             }
 

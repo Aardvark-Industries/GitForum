@@ -106,8 +106,8 @@ title: Untitled Post
         document.getElementById("postBoard").innerText = post.board;
         document.getElementById("postBoard").href = "board?board=" + post.board;
 
-        document.getElementById("postAuthor").innerText = post.author;
-        document.getElementById("postAuthor").href = "user?board=user&user=" + post.author;
+        document.getElementById("postAuthor").innerText = post.author.login;
+        document.getElementById("postAuthor").href = "user?user=" + post.author.login;
         
         var DateTime = luxon.DateTime;
         document.getElementById("postTime").innerText = DateTime.fromISO(post.date).toRelative().toLocaleString(DateTime.DATETIME_MED);

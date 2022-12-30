@@ -4,6 +4,16 @@ layout: page
 permalink: /changelog
 ---
 
+# v0.9b
+*30/12/2022*
+### New Features
+- Dark Mode
+- Update to Bootstrap 5.3
+
+### Bugfixes
+- Use new bot address for login as Heroku's free tier was discontinued.
+- Fixed an issue where user profiles could not be viewed by unauthenticated users.
+
 # v0.8.1b
 *17/09/2022*
 ### New Features
@@ -11,7 +21,7 @@ permalink: /changelog
 - About page
 
 ### Changes
-- Homepage now displays latest GitForum news
+- Homepage now displays latest GitForum news.
 
 # v0.8b
 *17/06/2022*
@@ -24,8 +34,8 @@ permalink: /changelog
 # v0.7.2b
 *17/06/2022*
 ### Changes
-- The homepage now shows all posts from different boards, and links to a new about page
-- Update to Bootstrap 5.2 and icons 1.8
+- The homepage now shows all posts from different boards, and links to a new about page.
+- Update to Bootstrap 5.2 and icons 1.8.
 
 # v0.7.1a
 *26/04/2022*

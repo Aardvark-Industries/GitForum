@@ -38,7 +38,7 @@ title: Logging in...
 
             try{
                 document.getElementById("loadingMessage").innerText = "Requesting token from GitHub's servers..."
-                await fetch("https://gitforum-bot.herokuapp.com/auth", {
+                await fetch("https://gitforum-bot.onrender.com/auth", {
                     "method": "POST", 
                     "headers": {
                         "Content-Type": "application/json"

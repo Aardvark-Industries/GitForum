@@ -88,13 +88,18 @@ async function getAuthenticatedUser(octokit) {
 
 async function getUser(octokit, username) {
     var data = await (await octokit.rest.users.getByUsername({username})).data;
-    var permissions = await octokit.rest.repos.getCollaboratorPermissionLevel({
-        owner: "Aardvark-Industries",
-        repo: "GitForum-content",
-        username: username
-    });
+    console.log(data)
+    try {
+        var permissions = await octokit.rest.repos.getCollaboratorPermissionLevel({
+            owner: "Aardvark-Industries",
+            repo: "GitForum-content",
+            username: username
+        });
 
-    data["permissions"] = permissions.data.permission;
+        data["permissions"] = permissions.data.permission;
+    } catch(e) {
+        
+    }
     return data
 }
 

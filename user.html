@@ -34,29 +34,32 @@ layout: default
         try {
             var user = await getUser(window.OCTOKIT, URLParams.get('user'));
             console.log(user)
+
+            document.getElementById("pageTitle").innerText = user.login; // set title
+            document.getElementById("pageDescription").innerText = user.bio; // set description
+            document.getElementById("profilePic").src = user.avatar_url;
+
+            if(user.permissions){
+                switch (user.permissions) {
+                case "admin": // user is a developer
+                    document.getElementById("userBadge").style.display = null
+                    break
+                case "write": // user is a moderator
+                    document.getElementById("userBadge").innerText = "Moderator"
+                    document.getElementById("userBadge").style.backgroundColor = "var(--bs-yellow)"
+                    document.getElementById("userBadge").style.display = null
+                    break
+                }
+            }
+            
+
+            document.title = "GitForum - " + user.login;
+            
+            await displayUserPostPreviews(window.OCTOKIT, user.login);
+
+            document.getElementById("postsLoading").style.display = "none";
         } catch(e) {
             errorMessage("User not found")
         }
-
-        document.getElementById("pageTitle").innerText = user.login; // set title
-        document.getElementById("pageDescription").innerText = user.bio; // set description
-        document.getElementById("profilePic").src = user.avatar_url;
-
-        switch (user.permissions) {
-            case "admin": // user is a developer
-                document.getElementById("userBadge").style.display = null
-                break
-            case "write": // user is a moderator
-                document.getElementById("userBadge").innerText = "Moderator"
-                document.getElementById("userBadge").style.backgroundColor = "var(--bs-yellow)"
-                document.getElementById("userBadge").style.display = null
-                break
-        }
-
-        document.title = "GitForum - " + user.login;
-        
-        await displayUserPostPreviews(window.OCTOKIT, user.login);
-
-        document.getElementById("postsLoading").style.display = "none";
     })();
 </script>

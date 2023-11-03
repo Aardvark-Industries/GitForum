@@ -2,7 +2,7 @@
 ---
 
 import {Post, Board, getPostFromURL, getBoardFromURL} from '/{{ site.repo }}/modules/classes.js';
-import {Octokit} from 'https://cdn.skypack.dev/@octokit/rest';
+import {Octokit} from 'https://esm.sh/@octokit/rest';
 import Cookies from 'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.mjs';
 
 var URLParams = new URLSearchParams(window.location.search);

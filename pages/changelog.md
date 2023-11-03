@@ -4,6 +4,11 @@ layout: page
 permalink: /changelog
 ---
 
+# v0.9.1b
+*03/12/2023*
+### Changes
+- Use ESM.js instead of skypack to load Octokit
+
 # v0.9b
 *30/12/2022*
 ### New Features
